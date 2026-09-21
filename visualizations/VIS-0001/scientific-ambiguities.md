@@ -2,22 +2,17 @@
 
 These are not visual-design defects. They are places where the canonical substrate is incomplete, internally inconsistent, or intentionally unresolved and therefore constrain what VIS-0001 may safely depict.
 
-## 1. BIO registry does not reflect the integrated Red Team corrections
+## 1. EF-PUB-0001 — canonical BIO registry inconsistency — resolved
 
-**Severity for publication:** high.
+**Historical significance:** high; **current publication blocker from this issue:** none.
 
-On `main`, `Biology_2.md`, `Data_2.md`, `RedTeam_2.md`, and `Editorial_1.md` state that RT-0001 through RT-0008 were incorporated and resolved.
+During initial VIS-0001 development, the Design & Visualization Desk independently identified that `claims/registry.yaml` retained Biology_1-era fields while Biology_2, Data_2, RedTeam_2 and Editorial_1 recorded accepted corrections. The issue was later tracked as **EF-PUB-0001**.
 
-However, `claims/registry.yaml` still contains version-1 BIO objects. Examples visible during this review include:
+The canonical registry has now been reconciled and integrated on `main` after Biology reconciliation, Librarian provenance verification, and Red Team canonical-consistency/mechanical verification.
 
-- BIO-0002 still says humans have no physiologically meaningful oxygen store capable of substituting for sustained delivery, while Biology_2/RedTeam_2 require explicit recognition of finite short-duration lung/blood/myoglobin oxygen inventories.
-- BIO-0003 still carries `quantity_role: Consumption`, while Data_2/Editorial_1 classify CO2 elimination as Output/Elimination.
-- BIO-0005 still uses pre-correction wording centered on external water replacement, while Biology_2/Data_2 explicitly add metabolic water and provenance.
-- BIO-0009 still states a >24-hour replenishment horizon in ordinary stocked conditions, while Biology_2/RedTeam_2 say that assertion was retracted and the horizon remains unresolved.
+**Visualization disposition:** the inconsistency did not determine VIS-0001's core architecture because the first visual pass already followed the accepted integrated correction state. Post-reconciliation review found only targeted clarity refinements: explicit whole-body vs compartment electrolyte labeling, explicit free-amino-acid-pool vs body-protein distinction, and explicit naming of unresolved amino-acid / essential-fatty-acid horizons.
 
-**Visualization action:** VIS-0001 depicts the accepted corrections described by the integrated Wave-1 notes and records the registry mismatch rather than copying the stale clauses.
-
-**Required before external publication:** normalize the BIO registry or document an explicit canonical precedence rule for the integrated Scientific Core.
+The original discovery is preserved here as durable design history rather than deleted.
 
 ## 2. Output/Elimination is conceptually accepted but schema normalization is incomplete
 

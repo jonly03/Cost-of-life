@@ -56,15 +56,16 @@
 <path d="M395 440 q95 22 190 0" fill="none" stroke="#b99c67" stroke-width="2"/>
 <text x="418" y="470" class="small">body water</text>
 <text x="418" y="498" class="small">glycogen + adipose</text>
-<text x="418" y="526" class="small">electrolyte inventory</text>
-<text x="418" y="554" class="small">body protein / tissue*</text>
-<text x="405" y="610" class="small muted">*not consequence-free reserve</text>
+<text x="418" y="526" class="small">whole-body electrolytes</text>
+<text x="418" y="554" class="small">free amino-acid pool</text>
+<text x="418" y="574" class="small">body protein / tissue*</text>
+<text x="405" y="614" class="small muted">*functional tissue; not consequence-free reserve</text>
 
 <text x="630" y="385" class="label">BOUNDED STATES</text>
 <circle cx="735" cy="470" r="88" fill="#f3e5e4" stroke="#9c6d69" stroke-width="3"/>
 <circle cx="735" cy="470" r="58" fill="none" stroke="#c49b98" stroke-width="2" stroke-dasharray="7 6"/>
 <text x="678" y="447" class="small">hydration /</text><text x="679" y="472" class="small">osmolality</text>
-<text x="674" y="500" class="small">electrolytes</text>
+<text x="674" y="500" class="small">compartment gradients</text>
 <text x="680" y="525" class="small">core temp</text>
 <text x="654" y="583" class="small muted">viable range ≠ universal number</text>
 
@@ -115,10 +116,10 @@
 <text x="80" y="930" class="h2">Different dependencies run on different clocks</text>
 <line x1="85" y1="982" x2="1515" y2="982" stroke="#243447" stroke-width="4"/>
 <circle cx="220" cy="982" r="8" fill="#243447"/><circle cx="610" cy="982" r="8" fill="#243447"/><circle cx="1010" cy="982" r="8" fill="#243447"/><circle cx="1390" cy="982" r="8" fill="#243447"/>
-<text x="120" y="1024" class="label">seconds → minutes</text><text x="120" y="1052" class="small muted">O₂ continuity / short buffer</text>
+<text x="120" y="1024" class="label">seconds → minutes</text><text x="120" y="1052" class="small muted">finite O₂ buffer + continuing external access</text>
 <text x="510" y="1024" class="label">continuous regulation</text><text x="510" y="1052" class="small muted">metabolism · circulation · heat balance</text>
 <text x="915" y="1024" class="label">hours → days</text><text x="915" y="1052" class="small muted">water depends on stock, loss, context</text>
-<text x="1290" y="1024" class="label">variable / unresolved</text><text x="1290" y="1052" class="small muted">several nutrient horizons + thresholds</text>
+<text x="1290" y="1024" class="label">variable / unresolved</text><text x="1290" y="1052" class="small muted">amino-acid + essential-fatty-acid horizons unresolved</text>
 <path d="M1515 966 l0 32" stroke="#243447" stroke-width="3" stroke-dasharray="6 5"/>
 <text x="1455" y="1080" class="small muted">24 h is observation, not default refill cadence</text>
 </svg>

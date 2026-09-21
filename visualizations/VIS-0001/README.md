@@ -145,10 +145,26 @@ without changing the meaning of the physiological layer. This protects the proje
 
 The visual style avoids anatomical realism. The organism is treated as a **system boundary with typed internal objects and boundary-crossing relations**, which is closer to the conceptual discovery of Wave 1 and more reusable across later waves.
 
-## Known repository consistency issue
+## Post-reconciliation refresh — EF-PUB-0001 resolved
 
-During design review, the desk found that `Biology_2.md`, `Data_2.md`, `RedTeam_2.md`, and `Editorial_1.md` on `main` describe corrected v2 semantics, while `claims/registry.yaml` still contains version-1 wording for all BIO claims. Examples include the old BIO-0002 zero-meaningful-oxygen-store wording and pre-correction quantity-role language.
+During initial VIS-0001 development, the Design & Visualization Desk independently identified the canonical BIO registry inconsistency later tracked as **EF-PUB-0001**. That discovery remains part of the durable design history.
 
-VIS-0001 therefore follows the **integrated Scientific Core narrative in Biology_2/Data_2/RedTeam_2/Editorial_1 where those documents explicitly record accepted Red Team corrections**, while recording the registry mismatch as an ambiguity rather than silently treating the registry as repaired.
+The canonical BIO registry has since been reconciled on `main` and the repair passed Biology reconciliation, Librarian provenance verification, and Red Team canonical-consistency/mechanical verification before integration.
 
-This discrepancy should be normalized before final publication approval.
+### Visual audit result
+
+The stale registry **did not drive the core visual architecture**. VIS-0001 had already followed the accepted Biology_2/Data_2/RedTeam_2 semantics rather than copying stale registry clauses. No structural redesign is required.
+
+Three targeted clarity corrections were made after reconciliation:
+
+1. **Electrolytes** — the stock label now says **whole-body electrolytes**, while the state label says **compartment gradients**, making the stock/state/boundary distinction explicit.
+2. **Amino acids vs body protein** — the stock panel now separately names a **free amino-acid pool** and the **canonical body-protein/tissue inventory**, with body protein marked as functional tissue rather than a consequence-free reserve.
+3. **Unresolved nutrient horizons** — the timescale ribbon now explicitly names **amino-acid and essential-fatty-acid horizons as unresolved** rather than using the broader phrase “several nutrient horizons.”
+
+Oxygen, water/metabolic-water provenance, Output/Elimination, and the open-ended environmental surface were already represented consistently with the repaired canonical state and required no substantive visual correction.
+
+See `post-reconciliation-audit.md` for the element-by-element audit and canonical basis.
+
+## Current review posture
+
+VIS-0001 is **ready for the combined PUB/VIS Red Team public-translation audit**. It remains internal and must not be published externally before that audit and PI approval.

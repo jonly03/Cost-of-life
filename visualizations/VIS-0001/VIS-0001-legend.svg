@@ -7,10 +7,10 @@
 
 <!-- row 1 -->
 <path d="M90 195 h180 v95 q0 22 -22 22 h-136 q-22 0 -22 -22 z" fill="#f0e4cb" stroke="#9a8052" stroke-width="2"/><path d="M90 220 q90 20 180 0" fill="none" stroke="#b99c67" stroke-width="2"/>
-<text x="300" y="218" class="h2">Stock</text><text x="300" y="250" class="body">Accumulated quantity within a declared boundary.</text><text x="300" y="280" class="body muted">Example: body water; canonical body-protein inventory.</text>
+<text x="300" y="218" class="h2">Stock</text><text x="300" y="250" class="body">Accumulated quantity within a declared boundary.</text><text x="300" y="280" class="body muted">Examples: body water; whole-body electrolytes; free AA pool; canonical body-protein.</text>
 
 <line x1="835" y1="245" x2="1035" y2="245" stroke="#243447" stroke-width="5" marker-end="url(#a)"/>
-<text x="1065" y="218" class="h2">Flow</text><text x="1065" y="250" class="body">Transfer, input, output, production, or throughput.</text><text x="1065" y="280" class="body muted">Crossing the organism boundary does not imply purchase.</text>
+<text x="1065" y="218" class="h2">Flow</text><text x="1065" y="250" class="body">Transfer, input, output, production, or throughput.</text><text x="1065" y="280" class="body muted">Boundary-crossing flow does not imply purchase or same-window replenishment.</text>
 
 <!-- row 2 -->
 <circle cx="180" cy="410" r="78" fill="#f3e5e4" stroke="#9c6d69" stroke-width="3"/><circle cx="180" cy="410" r="48" fill="none" stroke="#c49b98" stroke-width="2" stroke-dasharray="7 6"/>
@@ -21,7 +21,7 @@
 
 <!-- row 3 -->
 <path d="M105 555 h26 v145 h-26 M131 555 h100 M131 700 h100" fill="none" stroke="#7b6c91" stroke-width="4"/>
-<text x="300" y="580" class="h2">Capacity</text><text x="300" y="613" class="body">Ability to perform a process or sustain a flow.</text><text x="300" y="643" class="body muted">Ability is not the same as realized throughput.</text>
+<text x="300" y="580" class="h2">Capacity</text><text x="300" y="613" class="body">Ability to perform a process or sustain a flow.</text><text x="300" y="643" class="body muted">Ability is not the same as realized throughput or a consumable stock.</text>
 
 <rect x="820" y="545" width="220" height="120" rx="20" fill="#d8e6eb" stroke="#6f8794" stroke-width="2"/>
 <text x="855" y="596" class="body">environment</text><text x="855" y="625" class="body">condition</text>

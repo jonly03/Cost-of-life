@@ -19,20 +19,20 @@ claims:
     assumptions: ["Baseline metabolic machinery is functioning at t0."]
     uncertainty: {type: [scope, quantitative], notes: "Magnitude varies substantially with body size, composition, activity, illness and environment."}
     limitations: ["Does not equate cellular energy use with same-day food intake."]
-    relationships: {supported_by: [], challenged_by: [], depends_on: [], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
+    relationships: {supported_by: [REF-0002, REF-0023], challenged_by: [], depends_on: [], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
     peom_implication: "Model energy as a continuous physiological flow supplied by internal and/or external substrates, not as a mandatory daily purchase."
     version: 1
 
   - id: BIO-0002
     experiment_ids: [EXP-0001]
-    claim: "Aerobic ATP production in metabolically active tissues depends on a continuous supply of oxygen from the environment through ventilation, gas exchange, blood oxygen carriage, perfusion and tissue diffusion; humans do not possess a physiologically meaningful oxygen store that can substitute for sustained delivery."
+    claim: "Aerobic ATP production in metabolically active tissues depends on continuing oxygen delivery through ventilation, gas exchange, blood oxygen carriage, perfusion and tissue diffusion. The lungs, oxygenated blood/hemoglobin and myoglobin provide finite short-duration oxygen inventories, but these cannot sustain whole-body metabolism across the 24-hour observation window without renewed environmental oxygen access."
     claim_type: physiological_dependency
     status: proposed
     variable_or_dependency: oxygen_delivery_to_tissues
     dependency_class: [Flow, Process, Capacity, Externally_mediated]
     system_boundary: "Atmosphere-to-mitochondria oxygen cascade"
     observation_window: "24 hours"
-    replenishment_horizon: "Seconds to minutes; effectively continuous."
+    replenishment_horizon: "Finite internal oxygen inventories can buffer short interruptions on seconds-to-minutes timescales; sustained 24-hour metabolism requires continuing environmental oxygen access."
     quantity_role: Requirement
     population: {age: "all", sex: "all", body_mass: "modifier", body_composition: "modifier", health_status: "major modifier", activity_level: "major modifier", climate: null, altitude: "major modifier via inspired PO2", pregnancy_lactation: "modifier", notes: "Required oxygen flux depends on metabolic rate."}
     threshold_type: [survival, physiological_stability, functional_performance]
@@ -41,10 +41,10 @@ claims:
     units: null
     assumptions: ["Hemoglobin, lungs, circulation and mitochondria are functional at t0."]
     uncertainty: {type: [threshold, quantitative], notes: "No universal inspired oxygen concentration or consumption rate is asserted; barometric pressure and physiology matter."}
-    limitations: ["A sea-level resting VO2 example must not be treated as a universal minimum."]
-    relationships: {supported_by: [], challenged_by: [], depends_on: [BIO-0001], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
+    limitations: ["A sea-level resting VO2 example must not be treated as a universal minimum.", "Short-duration oxygen inventory must not be confused with a stock capable of sustaining the observation window."]
+    relationships: {supported_by: [REF-0001, REF-0016, REF-0026], challenged_by: [RT-0001], depends_on: [BIO-0001], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
     peom_implication: "The economic resource is access to a breathable oxygen environment, not a fixed daily quantity of bottled oxygen."
-    version: 1
+    version: 2
 
   - id: BIO-0003
     experiment_ids: [EXP-0001]
@@ -56,7 +56,7 @@ claims:
     system_boundary: "Cellular CO2 production through pulmonary exhalation"
     observation_window: "24 hours"
     replenishment_horizon: "Continuous elimination rather than replenishment."
-    quantity_role: Consumption
+    quantity_role: Output/Elimination
     population: {age: "all", sex: "all", body_mass: "modifier", body_composition: "modifier", health_status: "major modifier", activity_level: "major modifier", climate: null, altitude: "modifier", pregnancy_lactation: "modifier", notes: "CO2 production tracks substrate oxidation and metabolic rate."}
     threshold_type: [survival, physiological_stability, functional_performance]
     value: null
@@ -65,9 +65,9 @@ claims:
     assumptions: ["Respiratory control and gas transport are functional at t0."]
     uncertainty: {type: [quantitative], notes: "Required ventilation is state-dependent."}
     limitations: ["CO2 is a metabolic output whose controlled removal is required; it is not an external consumable requirement."]
-    relationships: {supported_by: [], challenged_by: [], depends_on: [BIO-0001, BIO-0002], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
+    relationships: {supported_by: [REF-0015], challenged_by: [RT-0005], depends_on: [BIO-0001, BIO-0002], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
     peom_implication: "Represent waste-gas removal as a physiological process enabled by a ventilatory environment."
-    version: 1
+    version: 2
 
   - id: BIO-0004
     experiment_ids: [EXP-0001]
@@ -88,18 +88,18 @@ claims:
     assumptions: ["Baseline cardiovascular structures exist at t0."]
     uncertainty: {type: [threshold, quantitative], notes: "Organ-specific critical perfusion thresholds differ."}
     limitations: ["Cardiac output averages are not minima."]
-    relationships: {supported_by: [], challenged_by: [], depends_on: [BIO-0002, BIO-0001], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
+    relationships: {supported_by: [REF-0001, REF-0016], challenged_by: [], depends_on: [BIO-0002, BIO-0001], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
     peom_implication: "Treat circulation primarily as inherited physiological capacity whose maintenance can create downstream healthcare dependencies, not a daily commodity."
     version: 1
 
   - id: BIO-0005
     experiment_ids: [EXP-0001]
-    claim: "Body water is a pre-existing physiological stock whose volume and osmolality must remain within viable ranges; water is continuously lost through urine, respiration, skin and feces and must eventually be replaced from external water contained in fluids and food, but 24-hour loss does not imply an identical fixed 24-hour drinking-water requirement."
+    claim: "Body water is a pre-existing physiological stock whose volume and osmolality must remain within viable ranges. Water is continuously lost through urine, respiration, skin and feces; body-water balance can be supported by preformed water from beverages/food and by metabolic water generated during substrate oxidation. Required preformed external-water input is therefore conditional on initial hydration, metabolic water production and losses rather than being identical to 24-hour water loss."
     claim_type: physiological_dependency
     status: proposed
     variable_or_dependency: body_water_and_osmolality
     dependency_class: [Stock, State, Flow, Process]
-    system_boundary: "Total body water and external water exchange"
+    system_boundary: "Total body water, preformed external water exchange, and metabolic water production"
     observation_window: "24 hours"
     replenishment_horizon: "Hours to days depending on initial hydration, losses and access; tighter under heat, exertion, illness or other high-loss states."
     quantity_role: Replenishment
@@ -108,12 +108,12 @@ claims:
     value: null
     range: null
     units: null
-    assumptions: ["Organism begins at t0 with nonzero body-water stock."]
+    assumptions: ["Organism begins at t0 with nonzero body-water stock.", "Metabolic water is generated from oxidation of metabolic substrates and must not be double-counted as an independent external input."]
     uncertainty: {type: [threshold, individual_variability], notes: "Normal hydration occurs across a wide range of intakes; loss rates vary markedly."}
     limitations: ["National Academies Adequate Intake values are population intake references, not physiological survival minima.", "Do not equate total water AI with plain drinking-water requirement."]
-    relationships: {supported_by: [], challenged_by: [], depends_on: [BIO-0004], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
+    relationships: {supported_by: [REF-0004, REF-0013, REF-0019], challenged_by: [RT-0002], depends_on: [BIO-0004], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
     peom_implication: "Model water as stock-and-flow with initial state, endogenous/metabolic water, food water, fluid intake and multiple loss pathways."
-    version: 1
+    version: 2
 
   - id: BIO-0006
     experiment_ids: [EXP-0001]
@@ -122,7 +122,7 @@ claims:
     status: proposed
     variable_or_dependency: electrolyte_homeostasis
     dependency_class: [Stock, State, Process]
-    system_boundary: "Body electrolyte pools and transmembrane gradients"
+    system_boundary: "Whole-body electrolyte inventory plus explicitly distinguished compartment-specific electrolyte pools and transmembrane gradients"
     observation_window: "24 hours"
     replenishment_horizon: "Variable; depends on initial stores and net losses. Same-day dietary intake is not necessarily required to equal same-day turnover."
     quantity_role: Requirement
@@ -133,10 +133,10 @@ claims:
     units: null
     assumptions: ["Kidney and endocrine regulation are functioning at t0."]
     uncertainty: {type: [threshold, replenishment_horizon], notes: "Requirement differs from dietary guidance and is strongly affected by abnormal losses and disease."}
-    limitations: ["Serum concentration is a regulated state and not a direct proxy for total-body stock.", "Dietary sodium/potassium recommendations must not be treated as survival minima."]
-    relationships: {supported_by: [], challenged_by: [], depends_on: [BIO-0005], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
+    limitations: ["Serum concentration is a regulated state and not a direct proxy for total-body stock.", "Dietary sodium/potassium recommendations must not be treated as survival minima.", "Internal redistribution changes compartment inventories but does not change conserved whole-body electrolyte mass; downstream models must specify the stock boundary."]
+    relationships: {supported_by: [REF-0004, REF-0005, REF-0015, REF-0019], challenged_by: [RT-0006], depends_on: [BIO-0005], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
     peom_implication: "Represent electrolytes as regulated stocks/states with loss-dependent replenishment."
-    version: 1
+    version: 2
 
   - id: BIO-0007
     experiment_ids: [EXP-0001]
@@ -145,7 +145,7 @@ claims:
     status: proposed
     variable_or_dependency: metabolic_substrate_availability
     dependency_class: [Stock, Flow, Process]
-    system_boundary: "Endogenous energy stores plus external nutrient input"
+    system_boundary: "Endogenous glycogen and adipose energy stores, canonical body-protein/tissue inventory, plus external nutrient input"
     observation_window: "24 hours"
     replenishment_horizon: "From less than a day for some glycogen pools to days/weeks or longer for adipose energy; highly individual."
     quantity_role: Replenishment
@@ -156,10 +156,10 @@ claims:
     units: null
     assumptions: ["Nonzero glycogen and fat stores at t0.", "No condition requiring continuous exogenous glucose or feeding."]
     uncertainty: {type: [population_scope, replenishment_horizon], notes: "Not applicable to all infants, frail individuals, some diseases, pregnancy/lactation states or severe catabolic stress."}
-    limitations: ["No claim that fasting is healthy, comfortable or function-preserving for every person.", "No fixed daily calorie minimum is asserted."]
-    relationships: {supported_by: [], challenged_by: [], depends_on: [BIO-0001], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
+    limitations: ["No claim that fasting is healthy, comfortable or function-preserving for every person.", "No fixed daily calorie minimum is asserted.", "Body protein is one canonical physical tissue inventory that may contribute amino acids and oxidation substrate; it must not be duplicated as an independent energy reserve and amino-acid reserve."]
+    relationships: {supported_by: [REF-0002, REF-0003, REF-0014, REF-0017], challenged_by: [RT-0007], depends_on: [BIO-0001], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
     peom_implication: "Separate energy requirement from food-purchase cadence and caloric replenishment."
-    version: 1
+    version: 2
 
   - id: BIO-0008
     experiment_ids: [EXP-0001]
@@ -170,19 +170,19 @@ claims:
     dependency_class: [Flow, Stock, Process]
     system_boundary: "Protein turnover, amino-acid pools and exogenous amino-acid supply"
     observation_window: "24 hours"
-    replenishment_horizon: "Longer than immediate ATP/oxygen timescales; exact depletion/functional horizon is amino-acid-, state- and population-dependent."
+    replenishment_horizon: "Unresolved in Biology_2; essentiality is established, but the evidence base does not yet justify a generic depletion or safe non-replenishment horizon."
     quantity_role: Replenishment
     population: {age: "major modifier", sex: "modifier", body_mass: "modifier", body_composition: "modifier", health_status: "major modifier", activity_level: "modifier", climate: null, altitude: null, pregnancy_lactation: "major modifier", notes: "Conditionally essential amino acids vary with growth, illness and stress."}
     threshold_type: [physiological_stability, functional_performance, long_term_health]
     value: null
     range: null
     units: null
-    assumptions: ["Body protein and amino-acid pools exist at t0."]
-    uncertainty: {type: [replenishment_horizon, population_scope], notes: "No claim of a dedicated amino-acid storage organ; endogenous protein turnover can temporarily supply amino acids at a cost to tissue."}
-    limitations: ["Protein RDA is not treated as a survival minimum.", "Long-term necessity must not be calendar-forced into daily ingestion."]
-    relationships: {supported_by: [], challenged_by: [], depends_on: [BIO-0001, BIO-0007], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
+    assumptions: ["A dynamic free amino-acid pool and body-protein/tissue inventory exist at t0; they are distinct physiological objects."]
+    uncertainty: {type: [replenishment_horizon, population_scope], notes: "There is no dedicated amino-acid reserve analogous to adipose energy storage. Free amino-acid pools are dynamic; endogenous protein turnover can supply amino acids by mobilizing functional tissue, with physiological consequences."}
+    limitations: ["Protein RDA is not treated as a survival minimum.", "Long-term necessity must not be calendar-forced into daily ingestion.", "Body protein must share one canonical inventory with any energy-substrate representation; proteolysis, synthesis, oxidation and nitrogen loss are transformations of that inventory, not independent reserves."]
+    relationships: {supported_by: [REF-0003, REF-0024, REF-0025], challenged_by: [RT-0003, RT-0007], depends_on: [BIO-0001, BIO-0007], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
     peom_implication: "Nutrient model needs essentiality plus reserve/turnover horizon, not just daily recommended intake."
-    version: 1
+    version: 2
 
   - id: BIO-0009
     experiment_ids: [EXP-0001]
@@ -193,19 +193,19 @@ claims:
     dependency_class: [Stock, Flow, Process]
     system_boundary: "Body lipid pools and exogenous fatty-acid supply"
     observation_window: "24 hours"
-    replenishment_horizon: "Longer than 24 hours under ordinary stocked conditions; exact horizon not asserted in Biology_1."
+    replenishment_horizon: "Unresolved in Biology_2. Essentiality alone does not establish a same-calendar-day ingestion requirement, but no >24-hour healthy-person depletion horizon is asserted."
     quantity_role: Replenishment
     population: {age: "modifier", sex: "modifier", body_mass: "modifier", body_composition: "major modifier", health_status: "modifier", activity_level: "modifier", climate: null, altitude: null, pregnancy_lactation: "major modifier", notes: null}
     threshold_type: [physiological_stability, long_term_health]
     value: null
     range: null
     units: null
-    assumptions: ["Preexisting body lipid stores at t0."]
+    assumptions: ["Preexisting body lipid pools exist at t0; their capacity to buffer essential-fatty-acid deprivation across a specified duration remains unparameterized."]
     uncertainty: {type: [replenishment_horizon, quantitative], notes: "Deficiency-development timing and minimum intake are not established here."}
     limitations: ["Dietary intake recommendations are not survival thresholds."]
-    relationships: {supported_by: [], challenged_by: [], depends_on: [BIO-0007], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
-    peom_implication: "Treat essential lipids as longer-horizon nutrient stocks/flows."
-    version: 1
+    relationships: {supported_by: [REF-0003, REF-0022], challenged_by: [RT-0004], depends_on: [BIO-0007], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
+    peom_implication: "Represent essential-fatty-acid requirements using stock/flow semantics where appropriate, while keeping external replenishment cadence and replenishment horizon explicitly unresolved and distinct from the 24-hour observation window."
+    version: 2
 
   - id: BIO-0010
     experiment_ids: [EXP-0001]
@@ -226,7 +226,7 @@ claims:
     assumptions: ["Nonzero micronutrient inventories at t0."]
     uncertainty: {type: [nutrient_specificity, replenishment_horizon], notes: "Biology_1 deliberately rejects collapsing heterogeneous micronutrients into one daily number."}
     limitations: ["Requires decomposition by nutrient in later Biology waves.", "RDA/AI values are not automatically physiological minima."]
-    relationships: {supported_by: [], challenged_by: [], depends_on: [BIO-0001], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
+    relationships: {supported_by: [REF-0006, REF-0007, REF-0008, REF-0009], challenged_by: [], depends_on: [BIO-0001], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
     peom_implication: "Downstream model must support nutrient-specific stocks and horizons."
     version: 1
 
@@ -249,7 +249,7 @@ claims:
     assumptions: ["Baseline thermoregulatory physiology is functional at t0."]
     uncertainty: {type: [environmental, threshold], notes: "Safe ambient conditions cannot be expressed as one universal temperature because humidity, radiation, wind, clothing, activity and physiology interact."}
     limitations: ["A nominal normal core temperature is not a universal lethal threshold.", "Do not convert shelter into a universal consumable if the environment itself is already thermally compatible."]
-    relationships: {supported_by: [], challenged_by: [], depends_on: [BIO-0001, BIO-0005, BIO-0004], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
+    relationships: {supported_by: [REF-0011, REF-0012, REF-0021], challenged_by: [], depends_on: [BIO-0001, BIO-0005, BIO-0004], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
     peom_implication: "Model thermal safety as an environmental constraint satisfiable by different mechanisms, not automatically as housing."
     version: 1
 
@@ -263,7 +263,7 @@ claims:
     system_boundary: "Hepatic nitrogen handling and renal filtration/excretion"
     observation_window: "24 hours"
     replenishment_horizon: "Continuous/intermittent process; elimination rather than replenishment."
-    quantity_role: Consumption
+    quantity_role: Output/Elimination
     population: {age: "modifier", sex: "modifier", body_mass: "modifier", body_composition: "modifier", health_status: "major modifier", activity_level: "modifier", climate: "modifier through water balance", altitude: null, pregnancy_lactation: "modifier", notes: null}
     threshold_type: [survival, physiological_stability]
     value: null
@@ -272,9 +272,9 @@ claims:
     assumptions: ["Liver and kidneys have functioning baseline capacity at t0."]
     uncertainty: {type: [threshold], notes: "Exact duration tolerable for impaired excretion depends on solute, residual function and clinical state."}
     limitations: ["Urination frequency or stool frequency must not be mistaken for the underlying physiological requirement.", "Waste-removal infrastructure outside the body is a separate externally mediated dependency."]
-    relationships: {supported_by: [], challenged_by: [], depends_on: [BIO-0004, BIO-0005, BIO-0006], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
+    relationships: {supported_by: [REF-0015, REF-0020], challenged_by: [RT-0005], depends_on: [BIO-0004, BIO-0005, BIO-0006], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
     peom_implication: "Distinguish internal waste processing from sanitation infrastructure and disposal services."
-    version: 1
+    version: 2
 
   - id: BIO-0013
     experiment_ids: [EXP-0001]
@@ -295,13 +295,13 @@ claims:
     assumptions: ["The experiment begins with unspecified accumulated sleep state, which must be modeled explicitly for quantitative work."]
     uncertainty: {type: [survival_threshold, individual_variability], notes: "Biology_1 does not assert a minimum sleep duration for 24-hour survival."}
     limitations: ["Do not relabel consensus sleep-duration guidance as an immediate physiological minimum.", "Functional impairment can precede threat to viability."]
-    relationships: {supported_by: [], challenged_by: [], depends_on: [], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
+    relationships: {supported_by: [REF-0010, REF-0018], challenged_by: [], depends_on: [], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
     peom_implication: "Sleep belongs in the graph as a recurrent process/state dependency, with threshold class separated from survival."
     version: 1
 
   - id: BIO-0014
     experiment_ids: [EXP-0001]
-    claim: "For continued viability, the organism must remain within an external environment compatible with respiration and tissue integrity; this is an externally mediated boundary condition whose acceptable region depends on oxygen partial pressure, barometric pressure, inhaled contaminants, thermal load and other hazards rather than on a single universal 'air quantity' or shelter requirement."
+    claim: "For continued viability, the organism must remain within an external environment compatible with respiration and tissue integrity. BIO-0014 is an umbrella/decomposition requirement only: its admissible region is open-ended and includes respiratory, thermal, pressure, contaminant and other hazard dimensions that require hazard-specific child claims before quantitative or completeness-sensitive use."
     claim_type: physiological_dependency
     status: proposed
     variable_or_dependency: viable_external_environment
@@ -316,8 +316,8 @@ claims:
     range: null
     units: null
     assumptions: ["No extraordinary protective technology is assumed unless explicitly modeled."]
-    uncertainty: {type: [multivariate_boundary], notes: "A single environmental threshold is scientifically inappropriate."}
-    limitations: ["This claim does not imply housing is universally required during every 24-hour period.", "Environmental safety must be decomposed by hazard for quantitative modeling."]
-    relationships: {supported_by: [], challenged_by: [], depends_on: [BIO-0002, BIO-0011], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
+    uncertainty: {type: [multivariate_boundary, incomplete_hazard_surface], notes: "A single environmental threshold is scientifically inappropriate, and Biology_2 does not claim the enumerated hazard dimensions are exhaustive."}
+    limitations: ["This claim does not imply housing is universally required during every 24-hour period.", "Environmental safety must be decomposed by hazard for quantitative modeling.", "Do not treat BIO-0014 as a complete environmental admissibility surface."]
+    relationships: {supported_by: [REF-0011, REF-0012, REF-0021], challenged_by: [RT-0008], depends_on: [BIO-0002, BIO-0011], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
     peom_implication: "Represent environment as a constraint set and map alternative delivery mechanisms only downstream."
-    version: 1
+    version: 2
