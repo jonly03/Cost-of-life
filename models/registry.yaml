@@ -1,0 +1,232 @@
+schema_version: "0.2"
+models:
+  - id: DATA-0001
+    experiment_ids: [EXP-0001]
+    title: "Hybrid physiological dependency grammar"
+    status: revised_after_red_team
+    model_type: "constrained hybrid dynamical system"
+    variables:
+      - {symbol: "S_i(t)", class: Stock, meaning: "physiological inventory i with explicit system boundary", units: "claim-specific or unresolved"}
+      - {symbol: "F_ab(t)", class: Flow, meaning: "directed transfer from boundary/node a to b", units: "stock-unit/time or unresolved"}
+      - {symbol: "x_j(t)", class: State, meaning: "regulated physiological state", units: "claim-specific or unresolved"}
+      - {symbol: "C_k(t)", class: Capacity, meaning: "maximum feasible functional/transport rate", units: "claim-specific or unresolved"}
+      - {symbol: "P_l", class: Process, meaning: "transformation, transport, regulation or recovery relation", units: "not necessarily scalar"}
+      - {symbol: "e(t)", class: ExternalState, meaning: "open-ended environmental boundary-condition vector", units: "component-specific"}
+      - {symbol: "z", class: Modifier, meaning: "population/context modifier vector", units: "heterogeneous"}
+    relationships:
+      represents_claims: [BIO-0001, BIO-0002, BIO-0003, BIO-0004, BIO-0005, BIO-0006, BIO-0007, BIO-0008, BIO-0009, BIO-0010, BIO-0011, BIO-0012, BIO-0013, BIO-0014]
+      challenged_by: [RT-0001, RT-0002, RT-0003, RT-0005, RT-0006, RT-0007, RT-0008]
+      used_by: [DATA-0002, DATA-0003, DATA-0004, DATA-0005, DATA-0006, DATA-0007, DATA-0008]
+    assumptions:
+      - "t0 includes pre-existing stocks, states and capacities; magnitudes remain unknown unless evidenced."
+      - "Every stock declares a system/compartment boundary before internal transfers are introduced."
+      - "The observation window W=[t0,t0+24h] is independent of replenishment horizon."
+    equations:
+      - "dS_i/dt = sum_a(F_ai) - sum_b(F_ib) + B_i, where B_i is restricted to true production/destruction terms for the declared boundary."
+      - "For transfers internal to an enclosing conserved system, sum_i internal_transfer_i = 0."
+      - "x_j(t) in A_j(z,outcome) only when an evidence-backed admissible region exists; otherwise A_j remains unresolved."
+      - "|F_k(t)| <= C_k(t) for capacity-limited flows when justified."
+      - "D_m(t)=1{condition_m(S,x,e,z,t)}; environmental condition sets are open-ended until hazard-specific child models establish coverage."
+    uncertainty:
+      - "Unknown values are null/symbolic; averages/recommendations cannot fill missing biological parameters."
+      - "Survival, physiological stability, functional performance, long-term health and comfort remain distinct."
+    notes: "Red Team revision adds explicit conservation/boundary discipline and open-ended environmental coverage."
+
+  - id: DATA-0002
+    experiment_ids: [EXP-0001]
+    title: "Requirement-use-output-replenishment and time-window accounting"
+    status: revised_after_red_team
+    model_type: "windowed accounting specification"
+    variables:
+      - {symbol: "W", class: ObservationWindow, meaning: "24-hour EXP-0001 observation interval", units: "time"}
+      - {symbol: "U_i(W)", class: Use, meaning: "physiological use/depletion/throughput of a defined input or stock during W", units: "claim-specific"}
+      - {symbol: "Y_i(W)", class: OutputElimination, meaning: "material exported/eliminated from the organism during W", units: "claim-specific"}
+      - {symbol: "X_i(W)", class: ExternalInput, meaning: "external delivery during W", units: "claim-specific"}
+      - {symbol: "H_i", class: ReplenishmentHorizon, meaning: "biologically relevant restoration horizon", units: "time; may be interval or unknown"}
+    relationships:
+      represents_claims: [BIO-0001, BIO-0002, BIO-0003, BIO-0005, BIO-0006, BIO-0007, BIO-0008, BIO-0009, BIO-0010, BIO-0012]
+      challenged_by: [RT-0005]
+      used_by: []
+    assumptions:
+      - "Requirement, Use/Consumption, Output/Elimination and Replenishment are distinct roles."
+      - "Consumption must identify what is consumed: external input, internal stock, or process throughput."
+    equations:
+      - "Delta S_i(W)=integral_W(inputs_i-outputs_i+true_sources_i-true_sinks_i)dt."
+      - "Replenishment_i=R_i(S_i(t0),Delta S_i(W),target outcome,H_i,z); it is not defined as U_i(W) or Y_i(W)."
+      - "H_i != |W| unless independently supported."
+    uncertainty: ["H_i may be interval-valued, conditional, censored or unknown."]
+    notes: "RT-0005 resolved at model level: CO2/renal waste are outputs/elimination, not consumed resources."
+
+  - id: DATA-0003
+    experiment_ids: [EXP-0001]
+    title: "Energy and canonical substrate inventories"
+    status: revised_after_red_team
+    model_type: "coupled flow-stock model"
+    variables:
+      - {symbol: "A(t)", class: Flow, meaning: "usable cellular energy/ATP turnover", units: null}
+      - {symbol: "S_gly(t)", class: Stock, meaning: "available glycogen inventory", units: null}
+      - {symbol: "S_fat(t)", class: Stock, meaning: "available lipid energy inventory", units: null}
+      - {symbol: "S_bodyprotein_r(t)", class: CanonicalStock, meaning: "body-protein/tissue stock r shared with amino-acid model", units: null}
+      - {symbol: "F_food(t)", class: ExternalInput, meaning: "exogenous oxidizable substrate", units: null}
+    relationships:
+      represents_claims: [BIO-0001, BIO-0007, BIO-0008, BIO-0009]
+      challenged_by: [RT-0007]
+      shared_stocks_with: [DATA-0006]
+      used_by: []
+    assumptions:
+      - "Body protein is instantiated once; energy oxidation and amino-acid release are transformations/outflows from the same canonical tissue stock."
+    equations:
+      - "A(t)=Phi(substrate_oxidation(t),oxygen_delivery(t),z), Phi unresolved."
+      - "dS_gly/dt=storage_gly-mobilization_gly; dS_fat/dt=storage_fat-mobilization_fat."
+      - "dS_bodyprotein_r/dt=protein_synthesis_r-proteolysis_r-other_loss_r."
+      - "protein_oxidation draws from amino acids released through the canonical protein/amino-acid network; it does not instantiate a second protein reserve."
+      - "F_food(t)=0 over W does not imply A(t)=0 while admissible endogenous supply remains."
+    uncertainty: ["No universal daily calorie or reserve magnitude is asserted; protein mobilization safety/functional consequences remain unresolved."]
+    notes: "RT-0007 resolved structurally by canonical stock ownership."
+
+  - id: DATA-0004
+    experiment_ids: [EXP-0001]
+    title: "Respiratory gas delivery/removal with finite initial oxygen inventory"
+    status: revised_after_red_team
+    model_type: "capacity-constrained flow-stock model"
+    variables:
+      - {symbol: "S_O2_short(t)", class: Stock, meaning: "finite short-duration oxygen inventory across lung/blood/myoglobin compartments at modeled resolution", units: null}
+      - {symbol: "F_O2_env(t)", class: ExternalInput, meaning: "oxygen transfer from respiratory environment", units: null}
+      - {symbol: "F_O2_tissue(t)", class: Flow, meaning: "oxygen delivery/use by tissues", units: null}
+      - {symbol: "F_CO2_out(t)", class: OutputElimination, meaning: "carbon-dioxide elimination to environment", units: null}
+      - {symbol: "C_vent(t)", class: Capacity, meaning: "effective ventilation/gas-exchange capacity", units: null}
+      - {symbol: "C_perf(t)", class: Capacity, meaning: "effective circulation/perfusion capacity", units: null}
+      - {symbol: "e_resp(t)", class: ExternalState, meaning: "respiratory-environment dimensions currently modeled", units: "vector"}
+    relationships:
+      represents_claims: [BIO-0002, BIO-0003, BIO-0004, BIO-0014]
+      challenged_by: [RT-0001, RT-0008]
+      used_by: [DATA-0003]
+    assumptions:
+      - "Finite internal oxygen stores can buffer short interruptions but are not assumed capable of sustaining the 24-hour window."
+      - "e_resp is a partial hazard surface, not a complete viable-environment specification."
+    equations:
+      - "dS_O2_short/dt=F_O2_env-F_O2_tissue plus compartment transfers that conserve oxygen within the declared enclosing boundary."
+      - "F_O2_env=Psi(e_resp,C_vent,state,z), Psi unresolved."
+      - "F_O2_tissue=Gamma(S_O2_short,C_perf,metabolic_state,z), Gamma unresolved."
+      - "F_CO2_out=Omega(C_vent,C_perf,CO2_production,z), Omega unresolved."
+    uncertainty:
+      - "Magnitude/distribution of S_O2_short and critical gas thresholds remain unparameterized."
+      - "Environmental hazards not represented by e_resp remain explicit omissions."
+    notes: "RT-0001 and RT-0008 corrections: no instantaneous-input fiction and no claim of exhaustive environment coverage."
+
+  - id: DATA-0005
+    experiment_ids: [EXP-0001]
+    title: "Water and electrolyte homeostasis with explicit conservation boundaries"
+    status: revised_after_red_team
+    model_type: "multi-stock bounded-state model"
+    variables:
+      - {symbol: "S_water(t)", class: Stock, meaning: "whole-body water inventory", units: null}
+      - {symbol: "F_water_preformed(t)", class: ExternalInput, meaning: "preformed water from beverages/food", units: null}
+      - {symbol: "F_water_metabolic(t)", class: InternalProduction, meaning: "water produced by substrate oxidation; provenance linked to DATA-0003", units: null}
+      - {symbol: "x_osm(t)", class: State, meaning: "osmolality-related regulated state", units: null}
+      - {symbol: "S_elec_n_total(t)", class: Stock, meaning: "whole-body inventory of electrolyte n", units: null}
+      - {symbol: "S_elec_n_c(t)", class: CompartmentStock, meaning: "inventory of electrolyte n in compartment c when compartment detail is modeled", units: null}
+      - {symbol: "F_n_c_to_d(t)", class: InternalTransfer, meaning: "electrolyte n transfer from compartment c to d", units: null}
+      - {symbol: "F_loss_p(t)", class: OutputElimination, meaning: "water/electrolyte loss pathway p", units: null}
+    relationships:
+      represents_claims: [BIO-0005, BIO-0006, BIO-0012]
+      challenged_by: [RT-0002, RT-0006]
+      depends_on_models: [DATA-0003]
+      used_by: [DATA-0007]
+    assumptions:
+      - "Metabolic water is internally produced from externally sourced substrate already represented elsewhere; it must not be counted again as an independent external resource."
+      - "Whole-body electrolyte stock and compartment stocks are never mixed in one balance equation."
+    equations:
+      - "dS_water/dt=F_water_preformed+F_water_metabolic-sum_p(F_water_loss_p)."
+      - "dS_elec_n_total/dt=F_n_external-F_n_external_loss+true_source_n-true_sink_n; internal redistribution terms are excluded."
+      - "dS_elec_n_c/dt=F_n_external_to_c+sum_d(F_n_d_to_c)-sum_d(F_n_c_to_d)-F_n_c_external_loss."
+      - "sum_c[sum_d(F_n_d_to_c)-sum_d(F_n_c_to_d)]=0 for internal transfers."
+      - "x_osm and concentration gradients are functions of compartment inventories and regulation; serum concentration is not total-body stock."
+    uncertainty: ["Admissible ranges, compartment topology, pathway rates and replenishment horizons remain evidence-dependent."]
+    notes: "RT-0002/RT-0006 resolved structurally; downstream resource accounting must trace metabolic water to substrate oxidation."
+
+  - id: DATA-0006
+    experiment_ids: [EXP-0001]
+    title: "Nutrient-specific inventory/turnover family with amino-acid exception"
+    status: revised_after_red_team
+    model_type: "indexed stock-process family plus canonical protein network"
+    variables:
+      - {symbol: "S_n(t)", class: Stock, meaning: "nutrient-specific body pool only where a biologically defensible stock exists", units: null}
+      - {symbol: "S_AA_free_a(t)", class: DynamicPool, meaning: "free amino-acid pool for amino acid a; not a dedicated reserve", units: null}
+      - {symbol: "S_bodyprotein_r(t)", class: CanonicalStockReference, meaning: "shared body-protein/tissue stock owned jointly with DATA-0003", units: null}
+      - {symbol: "F_n_ext(t)", class: ExternalInput, meaning: "exogenous nutrient n", units: null}
+      - {symbol: "H_n", class: ReplenishmentHorizon, meaning: "nutrient-specific horizon only when supported; otherwise null", units: "time or unknown"}
+    relationships:
+      represents_claims: [BIO-0008, BIO-0009, BIO-0010]
+      challenged_by: [RT-0003, RT-0004, RT-0007]
+      shared_stocks_with: [DATA-0003]
+      used_by: []
+    assumptions:
+      - "Amino acids are not assigned a generic costless reserve."
+      - "Micronutrients are not collapsed into a homogeneous aggregate stock."
+      - "Essential-fatty-acid H_n remains unresolved unless evidence directly supports a population-specific horizon."
+    equations:
+      - "dS_AA_free_a/dt=dietary_input_a+proteolysis_release_a+synthesis_or_conversion_a-protein_synthesis_use_a-oxidation_a-other_loss_a."
+      - "dS_bodyprotein_r/dt=protein_synthesis_r-proteolysis_r-other_loss_r, identical canonical stock relation referenced by DATA-0003."
+      - "For non-amino-acid nutrient n with a defensible stock: dS_n/dt=F_n_ext+recycling_n-utilization_n-loss_n."
+      - "No quantitative H_n is inferred merely from nutrient essentiality or from rejection of same-day universality."
+    uncertainty:
+      - "Amino-acid turnover/replenishment horizons remain unresolved pending stronger evidence."
+      - "BIO-0009 >24-hour horizon is not encoded as validated."
+      - "Micronutrient-specific stocks/horizons remain pending decomposition."
+    notes: "RT-0003/RT-0004/RT-0007 corrections prevent false reserve ownership, double counting and unsupported positive horizons."
+
+  - id: DATA-0007
+    experiment_ids: [EXP-0001]
+    title: "Thermal homeostasis and conditional external support"
+    status: revised_after_red_team
+    model_type: "heat-balance constrained-state model"
+    variables:
+      - {symbol: "x_T(t)", class: State, meaning: "core thermal state", units: null}
+      - {symbol: "Q_met(t)", class: Flow, meaning: "metabolic heat production", units: null}
+      - {symbol: "Q_rad(t)", class: Flow, meaning: "radiative heat exchange", units: null}
+      - {symbol: "Q_conv(t)", class: Flow, meaning: "convective heat exchange", units: null}
+      - {symbol: "Q_cond(t)", class: Flow, meaning: "conductive heat exchange", units: null}
+      - {symbol: "Q_evap(t)", class: Flow, meaning: "evaporative heat exchange", units: null}
+      - {symbol: "e_thermal(t)", class: ExternalState, meaning: "thermal dimensions only: temperature/humidity/radiation/wind/protective mechanisms", units: "vector"}
+    relationships:
+      represents_claims: [BIO-0011, BIO-0014]
+      challenged_by: [RT-0008]
+      depends_on_claims: [BIO-0001, BIO-0004, BIO-0005]
+      used_by: []
+    assumptions:
+      - "External interventions are conditional; shelter/clothing are not intrinsic universal consumables."
+      - "This model covers thermal hazards only and cannot certify overall environmental viability."
+    equations:
+      - "dH_body/dt=Q_met-(Q_rad+Q_conv+Q_cond+Q_evap), using an explicit sign convention."
+      - "x_T(t) in A_T(z,outcome) only when A_T is evidence-backed."
+      - "ThermalSupportRequired(t)=1{intrinsic thermoregulation plus e_thermal cannot keep x_T in A_T}."
+    uncertainty: ["No universal ambient/core-temperature threshold is inserted; nonthermal environmental hazards are outside this child model."]
+    notes: "RT-0008 correction: BIO-0014 remains an umbrella; DATA-0007 is explicitly non-exhaustive."
+
+  - id: DATA-0008
+    experiment_ids: [EXP-0001]
+    title: "Waste processing, output elimination, sleep state and outcome-layer constraints"
+    status: revised_after_red_team
+    model_type: "process/state specification"
+    variables:
+      - {symbol: "F_waste_prod_r(t)", class: Flow, meaning: "internal production flow for waste species r", units: null}
+      - {symbol: "F_waste_out_r(t)", class: OutputElimination, meaning: "waste species r exported from organism", units: null}
+      - {symbol: "C_renal(t)", class: Capacity, meaning: "effective renal regulatory/excretory capacity", units: null}
+      - {symbol: "C_hepatic(t)", class: Capacity, meaning: "effective hepatic processing capacity", units: null}
+      - {symbol: "x_sleep(t0)", class: InitialState, meaning: "accumulated sleep/recovery state at experiment start", units: null}
+      - {symbol: "P_sleep(t)", class: Process, meaning: "sleep/recovery process", units: null}
+    relationships:
+      represents_claims: [BIO-0012, BIO-0013]
+      challenged_by: [RT-0005]
+      depends_on_claims: [BIO-0004, BIO-0005, BIO-0006]
+      used_by: []
+    assumptions:
+      - "Waste output/elimination is not Consumption."
+      - "Internal excretion is distinct from external sanitation infrastructure."
+      - "Sleep constraints concern function/long-term health here, not a demonstrated 24-hour survival minimum."
+    equations:
+      - "waste_state_r(t)=K_r(F_waste_prod_r,F_waste_out_r,C_renal,C_hepatic,z), K_r unresolved."
+      - "Outcome_sleep(W)=J(x_sleep(t0),P_sleep over W,z,outcome_class), J unresolved."
+    uncertainty: ["Waste-specific tolerances and quantitative sleep-state dynamics remain unknown."]
+    notes: "RT-0005 semantic correction applied; no acute renal/sleep interruption threshold implied."
