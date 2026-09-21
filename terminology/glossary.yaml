@@ -3,5 +3,188 @@ terms:
   - id: TERM-0001
     term: "Inventory Blindness"
     status: proposed
-    definition: "The error of inferring an external replenishment requirement directly from observed usage without accounting for stored reserves."
+    definition: "The error of inferring an external replenishment requirement directly from observed use, loss, or turnover without accounting for initial inventories, endogenous production, recycling, or other internal buffers."
+    scope: "EXP-0001 methodological error class."
     experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0005, BIO-0007, DATA-0001], related_terms: [TERM-0002, TERM-0004, TERM-0005]}
+    notes: "Observed throughput is not automatically an external input requirement."
+
+  - id: TERM-0002
+    term: "Requirement"
+    status: proposed
+    definition: "A condition, state, process, capacity, flow, or material availability that must be satisfied for a specified outcome under a declared population, system boundary, time horizon, and initial condition."
+    scope: "Requirement is outcome-relative. Survival, viability, stability, function, health, and comfort are not interchangeable endpoints."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0001, BIO-0002, BIO-0004, BIO-0006, BIO-0011, DATA-0002], related_terms: [TERM-0003, TERM-0004, TERM-0011, TERM-0012, TERM-0013, TERM-0014, TERM-0015]}
+    notes: "A physiological requirement does not by itself imply same-window external purchase, intake, or replenishment."
+
+  - id: TERM-0003
+    term: "Consumption"
+    status: proposed
+    definition: "Use, transformation, or depletion of a specifically identified input or stock within a declared system boundary."
+    scope: "Must identify what is consumed and from which boundary. External intake, internal reserve mobilization, and output/elimination are distinct."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0003, BIO-0012, DATA-0002], related_terms: [TERM-0002, TERM-0004, TERM-0005, TERM-0007]}
+    notes: "CO2 exhalation and renal excretion are outputs/elimination, not consumption of those wastes."
+
+  - id: TERM-0004
+    term: "Replenishment"
+    status: proposed
+    definition: "Restoration or addition to an inventory from outside that inventory's declared boundary."
+    scope: "The replenishment horizon may differ from both the observation window and the cadence of consumption."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0005, BIO-0007, BIO-0008, BIO-0009, BIO-0010, DATA-0002, DATA-0005, DATA-0006], related_terms: [TERM-0002, TERM-0003, TERM-0005, TERM-0006]}
+    notes: "A 24-hour observation window never establishes a 24-hour replenishment horizon by itself."
+
+  - id: TERM-0005
+    term: "Reserve"
+    status: proposed
+    definition: "An available portion of an existing stock or capacity that can buffer demand, loss, or interruption before external replenishment or other corrective action becomes necessary."
+    scope: "Reserve is not synonymous with total stock and need not be costless or functionally expendable."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0002, BIO-0007, BIO-0008, DATA-0003, DATA-0004, DATA-0006], related_terms: [TERM-0006, TERM-0010]}
+    notes: "Functional tissue such as body protein must not be treated as a dedicated, consequence-free nutrient reserve."
+
+  - id: TERM-0006
+    term: "Stock"
+    status: proposed
+    definition: "A quantity accumulated within a declared boundary at a point in time and changed by inflows, outflows, transfers, production, or destruction consistent with that boundary."
+    scope: "Examples include body water and canonical body-protein inventory. Compartment and whole-body stocks require different boundaries."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0005, BIO-0006, BIO-0007, DATA-0001, DATA-0003, DATA-0005, DATA-0006], related_terms: [TERM-0005, TERM-0007, TERM-0008]}
+    notes: "Internal redistribution cannot change a conserved whole-system stock."
+
+  - id: TERM-0007
+    term: "Flow"
+    status: proposed
+    definition: "A rate of transfer, input, output, production, destruction, or throughput across or within a declared boundary."
+    scope: "Flows have a time dimension and must not be represented as stocks without integration over time."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0001, BIO-0002, BIO-0003, BIO-0004, BIO-0005, DATA-0001, DATA-0005], related_terms: [TERM-0003, TERM-0006, TERM-0009]}
+    notes: "Measured daily turnover is a flow over an interval, not automatically a daily external requirement."
+
+  - id: TERM-0008
+    term: "State"
+    status: proposed
+    definition: "The condition or configuration of a system at a time, described by one or more variables whose admissible range may matter for an outcome."
+    scope: "A state can depend on stocks, flows, processes, and capacities but is not interchangeable with any of them."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0005, BIO-0006, BIO-0011, DATA-0001, DATA-0008], related_terms: [TERM-0006, TERM-0009, TERM-0010, TERM-0012]}
+    notes: "Serum electrolyte concentration is a regulated state, not a direct measure of total-body electrolyte stock."
+
+  - id: TERM-0009
+    term: "Process"
+    status: proposed
+    definition: "An activity or transformation occurring through time that changes, maintains, transports, regulates, or eliminates matter, energy, or system state."
+    scope: "Processes may be continuously required without themselves being consumable resources."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0001, BIO-0003, BIO-0004, BIO-0012, DATA-0008], related_terms: [TERM-0007, TERM-0008, TERM-0010]}
+    notes: "Circulation and renal processing illustrate required processes that should not be priced as if they were daily commodities."
+
+  - id: TERM-0010
+    term: "Capacity"
+    status: proposed
+    definition: "The ability or maximum feasible ability of a system, organ, mechanism, or infrastructure to perform a process or sustain a flow under specified conditions."
+    scope: "Capacity is an ability, not the realized flow and not necessarily a material stock."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0002, BIO-0004, BIO-0011, DATA-0001], related_terms: [TERM-0005, TERM-0007, TERM-0009]}
+    notes: "Capacity can constrain viability even when no consumable is depleted."
+
+  - id: TERM-0011
+    term: "Viability"
+    status: proposed
+    definition: "Continued existence of the living organism within physiological bounds sufficient to avoid irreversible loss of organism-level life over the stated horizon."
+    scope: "EXP-0001 uses viability as an outcome layer; it does not imply health, normal function, or comfort."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0001, BIO-0002, BIO-0014, DATA-0001], related_terms: [TERM-0012, TERM-0013, TERM-0014, TERM-0015]}
+    notes: "Specific viability thresholds remain claim- and context-dependent."
+
+  - id: TERM-0012
+    term: "Stability"
+    status: proposed
+    definition: "Maintenance of relevant physiological state variables within bounded ranges without unacceptable drift over the stated horizon."
+    scope: "Stability is stronger than mere momentary viability but does not necessarily imply health or full function."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0003, BIO-0005, BIO-0006, BIO-0011], related_terms: [TERM-0008, TERM-0011, TERM-0013, TERM-0014]}
+    notes: "The relevant variables and bounds must be declared rather than assumed universal."
+
+  - id: TERM-0013
+    term: "Function"
+    status: proposed
+    definition: "Ability to perform specified physiological, cognitive, behavioral, or task activities at a declared level over a stated horizon."
+    scope: "Function is task- and threshold-dependent and may degrade while viability is preserved."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0013, DATA-0008], related_terms: [TERM-0011, TERM-0012, TERM-0014, TERM-0015]}
+    notes: "Do not infer a survival requirement from evidence about performance impairment without an explicit bridge."
+
+  - id: TERM-0014
+    term: "Health"
+    status: proposed
+    definition: "A longer-horizon condition of physiological and psychological well-being or absence/reduction of disease and dysfunction, as operationalized by the evidence being used."
+    scope: "Health endpoints may justify recurring requirements without establishing acute survival minima."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0010, BIO-0013], related_terms: [TERM-0011, TERM-0012, TERM-0013, TERM-0015]}
+    notes: "Reference intakes and sleep recommendations often target health, not minimum 24-hour viability."
+
+  - id: TERM-0015
+    term: "Comfort"
+    status: proposed
+    definition: "A subjective or operationalized condition of acceptable physical or psychological ease, distinct from viability, stability, function, and health."
+    scope: "Comfort can motivate consumption or spending without constituting a physiological survival requirement."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0011, BIO-0013], related_terms: [TERM-0011, TERM-0012, TERM-0013, TERM-0014]}
+    notes: "Thermal comfort bands must not be substituted for lethal or viability boundaries."
+
+  - id: TERM-0016
+    term: "Resource"
+    status: proposed
+    definition: "Matter, energy, information, service, access, or other usable input that can contribute to satisfying a requirement within a declared system boundary."
+    scope: "A resource is not necessarily purchased, privately owned, or consumed during the observation window."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0002, BIO-0005, BIO-0014], related_terms: [TERM-0017, TERM-0018, TERM-0019, TERM-0020, TERM-0021]}
+    notes: "Ambient oxygen access is conceptually different from purchasing bottled oxygen."
+
+  - id: TERM-0017
+    term: "Environmental Condition"
+    status: proposed
+    definition: "An external physical, chemical, biological, or contextual condition that constrains or enables organismal states and processes."
+    scope: "Examples include breathable atmosphere and thermal conditions. The admissible environmental set is open-ended until hazard-specific evidence establishes coverage."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0002, BIO-0011, BIO-0014, DATA-0004, DATA-0007], related_terms: [TERM-0016, TERM-0018, TERM-0019]}
+    notes: "An environmental condition is not automatically a commodity or infrastructure asset."
+
+  - id: TERM-0018
+    term: "Delivery Mechanism"
+    status: proposed
+    definition: "A pathway, device, service, behavior, or system by which a resource or enabling condition is made accessible at the organism or relevant boundary."
+    scope: "Delivery mechanism is separate from the underlying requirement and from upstream infrastructure."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0002, BIO-0005, BIO-0011, BIO-0014], related_terms: [TERM-0016, TERM-0017, TERM-0019]}
+    notes: "A requirement for water does not by itself specify tap, bottle, pipe network, purchase, or other delivery mechanism."
+
+  - id: TERM-0019
+    term: "Infrastructure"
+    status: proposed
+    definition: "Durable physical, organizational, institutional, or networked systems that enable production, storage, transport, delivery, removal, protection, or access across repeated uses or users."
+    scope: "Infrastructure is an upstream enabling layer and must not be inferred merely because a physiological requirement exists."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [BIO-0012, BIO-0014], related_terms: [TERM-0016, TERM-0017, TERM-0018, TERM-0020]}
+    notes: "Internal waste excretion and external sanitation infrastructure are separate dependencies."
+
+  - id: TERM-0020
+    term: "Cost"
+    status: proposed
+    definition: "Resources or value foregone, used, depleted, or committed in producing, obtaining, maintaining, delivering, or enabling something, under an explicitly stated accounting perspective and boundary."
+    scope: "Cost may be monetary or nonmonetary and may occur at a different layer or time from the organism's physiological use."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [], related_terms: [TERM-0016, TERM-0019, TERM-0021]}
+    notes: "EXP-0001 must declare whose cost and which boundary before attaching a monetary value."
+
+  - id: TERM-0021
+    term: "Price"
+    status: proposed
+    definition: "The monetary amount asked, paid, or exchanged for a good, service, right, or access unit in a specified transaction, market, place, and time."
+    scope: "Price is an observed or quoted exchange value, not the same thing as physiological requirement, resource quantity, production cost, or social opportunity cost."
+    experiment_ids: [EXP-0001]
+    relationships: {clarifies_claims: [], related_terms: [TERM-0016, TERM-0020]}
+    notes: "A zero price does not imply zero resource use or zero cost; a positive price does not establish physiological necessity."
