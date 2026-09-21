@@ -1,0 +1,191 @@
+schema_version: "0.1"
+models:
+  - id: DATA-0001
+    experiment_ids: [EXP-0001]
+    title: "Hybrid physiological dependency grammar"
+    status: proposed
+    model_type: "constrained hybrid dynamical system"
+    variables:
+      - {symbol: "S_i(t)", class: Stock, meaning: "physiological inventory i", units: "claim-specific or unresolved"}
+      - {symbol: "F_i(t)", class: Flow, meaning: "material/energy transfer rate", units: "stock-unit/time or unresolved"}
+      - {symbol: "x_j(t)", class: State, meaning: "regulated physiological state", units: "claim-specific or unresolved"}
+      - {symbol: "C_k(t)", class: Capacity, meaning: "maximum feasible functional/transport rate", units: "claim-specific or unresolved"}
+      - {symbol: "P_l", class: Process, meaning: "transformation, transport, regulation or recovery relation", units: "not necessarily scalar"}
+      - {symbol: "e(t)", class: ExternalState, meaning: "environmental boundary-condition vector", units: "component-specific"}
+      - {symbol: "z", class: Modifier, meaning: "population/context modifier vector", units: "heterogeneous"}
+    relationships:
+      represents_claims: [BIO-0001, BIO-0002, BIO-0003, BIO-0004, BIO-0005, BIO-0006, BIO-0007, BIO-0008, BIO-0009, BIO-0010, BIO-0011, BIO-0012, BIO-0013, BIO-0014]
+      depends_on_claims: []
+      used_by: [DATA-0002, DATA-0003, DATA-0004, DATA-0005, DATA-0006, DATA-0007, DATA-0008]
+    assumptions:
+      - "t0 includes the pre-existing stocks, states and capacities asserted by Biology_1; magnitudes remain unknown unless evidence supplies them."
+      - "The observation window W=[t0,t0+24h] is independent of replenishment horizon."
+    equations:
+      - "dS_i/dt = sum(inputs_i) - sum(outputs_i) + G_i(S,x,z,t), with internal conversion/recycling G_i allowed and possibly unresolved."
+      - "x_j(t) in A_j(z,outcome) when an evidence-backed admissible region exists; otherwise A_j remains unresolved."
+      - "|F_k(t)| <= C_k(t) for capacity-limited flows when the relevant capacity is defined."
+      - "Conditional dependency D_m(t)=1{condition_m(S,x,e,z,t)}; conditions may remain symbolic."
+    uncertainty:
+      - "Unknown values are null/symbolic; population averages, recommendations and convenient daily values cannot fill missing biological parameters."
+      - "Survival, physiological stability, functional performance, long-term health and comfort thresholds are not interchangeable."
+    notes: "Grammar only; not a parameterized reference human."
+
+  - id: DATA-0002
+    experiment_ids: [EXP-0001]
+    title: "Requirement-consumption-replenishment and time-window accounting"
+    status: proposed
+    model_type: "windowed accounting specification"
+    variables:
+      - {symbol: "W", class: ObservationWindow, meaning: "24-hour EXP-0001 observation interval", units: "time"}
+      - {symbol: "U_i(W)", class: Consumption, meaning: "physiological throughput/use during W", units: "claim-specific"}
+      - {symbol: "X_i(W)", class: ExternalInput, meaning: "external delivery during W", units: "claim-specific"}
+      - {symbol: "H_i", class: ReplenishmentHorizon, meaning: "biologically relevant restoration horizon", units: "time; may be interval or unknown"}
+    relationships:
+      represents_claims: [BIO-0001, BIO-0002, BIO-0003, BIO-0005, BIO-0006, BIO-0007, BIO-0008, BIO-0009, BIO-0010, BIO-0012]
+      depends_on_claims: [BIO-0005, BIO-0007, BIO-0008, BIO-0009, BIO-0010]
+      used_by: []
+    assumptions: ["Requirement, Consumption and Replenishment are distinct semantic/model roles."]
+    equations:
+      - "Delta S_i(W)=integral_W(inputs_i-outputs_i+G_i)dt."
+      - "Replenishment_i = R_i(S_i(t0), Delta S_i(W), target outcome, H_i, z); it is not defined as Consumption_i(W)."
+      - "H_i != |W| unless independently supported."
+    uncertainty: ["H_i may be interval-valued, conditional, censored or unknown."]
+    notes: "Primary defense against calendar forcing and Inventory Blindness."
+
+  - id: DATA-0003
+    experiment_ids: [EXP-0001]
+    title: "Energy and metabolic-substrate representation"
+    status: proposed
+    model_type: "coupled flow-stock model"
+    variables:
+      - {symbol: "A(t)", class: Flow, meaning: "usable cellular energy/ATP turnover", units: null}
+      - {symbol: "S_gly(t)", class: Stock, meaning: "available glycogen inventory", units: null}
+      - {symbol: "S_fat(t)", class: Stock, meaning: "available lipid energy inventory", units: null}
+      - {symbol: "S_pro(t)", class: Stock, meaning: "mobilizable protein/tissue substrate when justified", units: null}
+      - {symbol: "F_food(t)", class: ExternalInput, meaning: "exogenous oxidizable substrate", units: null}
+    relationships:
+      represents_claims: [BIO-0001, BIO-0007, BIO-0008, BIO-0009]
+      depends_on_claims: [BIO-0001]
+      used_by: []
+    assumptions: ["Endogenous inventories may be nonzero at t0; no magnitude is assigned."]
+    equations:
+      - "A(t)=Phi(substrate_oxidation(t), oxygen_delivery(t), z), Phi unresolved."
+      - "dS_q/dt=storage_q(t)-mobilization_q(t), q in {gly,fat,pro}."
+      - "F_food(t)=0 over W does not imply A(t)=0 while admissible endogenous supply remains."
+    uncertainty: ["No universal daily calorie, glycogen, fat or protein value is asserted."]
+    notes: "Separates continuous energy requirement from same-day food intake."
+
+  - id: DATA-0004
+    experiment_ids: [EXP-0001]
+    title: "Respiratory gas delivery/removal representation"
+    status: proposed
+    model_type: "capacity-constrained flow model"
+    variables:
+      - {symbol: "F_O2(t)", class: Flow, meaning: "oxygen delivery to metabolically active tissues", units: null}
+      - {symbol: "F_CO2(t)", class: Flow, meaning: "carbon-dioxide elimination", units: null}
+      - {symbol: "C_vent(t)", class: Capacity, meaning: "effective ventilation/gas-exchange capacity", units: null}
+      - {symbol: "C_perf(t)", class: Capacity, meaning: "effective circulation/perfusion capacity", units: null}
+      - {symbol: "e_resp(t)", class: ExternalState, meaning: "respiratory environment including oxygen partial pressure/barometric pressure/contaminants", units: "vector"}
+    relationships:
+      represents_claims: [BIO-0002, BIO-0003, BIO-0004, BIO-0014]
+      depends_on_claims: [BIO-0001]
+      used_by: [DATA-0003]
+    assumptions: ["No meaningful oxygen inventory is introduced unless later Biology evidence supports one."]
+    equations:
+      - "F_O2(t)=Psi(e_resp,C_vent,C_perf,metabolic_state,z), Psi unresolved."
+      - "F_CO2(t)=Omega(C_vent,C_perf,CO2_production,z), Omega unresolved."
+      - "Viability constraints are outcome-specific inequalities on gas-related states/flows, not fixed sea-level averages."
+    uncertainty: ["Critical thresholds and transfer functions remain unparameterized."]
+    notes: "Represents access to a compatible respiratory environment rather than a bottled-air daily quantity."
+
+  - id: DATA-0005
+    experiment_ids: [EXP-0001]
+    title: "Water and electrolyte homeostasis representation"
+    status: proposed
+    model_type: "multi-stock bounded-state model"
+    variables:
+      - {symbol: "S_water(t)", class: Stock, meaning: "body-water inventory", units: null}
+      - {symbol: "x_osm(t)", class: State, meaning: "osmolality-related regulated state", units: null}
+      - {symbol: "S_electrolyte_n(t)", class: Stock, meaning: "nutrient/compartment-specific electrolyte inventory", units: null}
+      - {symbol: "x_gradient_n(t)", class: State, meaning: "regulated concentration/gradient state", units: null}
+      - {symbol: "F_water_ext(t)", class: ExternalInput, meaning: "water from fluids and food", units: null}
+      - {symbol: "F_loss_p(t)", class: Flow, meaning: "water/electrolyte loss pathway p", units: null}
+    relationships:
+      represents_claims: [BIO-0005, BIO-0006, BIO-0012]
+      depends_on_claims: [BIO-0004]
+      used_by: [DATA-0007]
+    assumptions: ["Nonzero body-water/electrolyte inventories at t0; renal/endocrine regulation as scoped by Biology_1."]
+    equations:
+      - "dS_water/dt=F_water_ext+F_metabolic-sum_p(F_loss_p)."
+      - "dS_electrolyte_n/dt=F_intake_n+F_internal_n-F_loss_n."
+      - "x_osm and x_gradient_n are functions of inventories, compartments and regulation; serum concentration is not equated to total-body stock."
+    uncertainty: ["Admissible ranges, compartment models, pathway rates and replenishment horizons remain claim/evidence dependent."]
+    notes: "Does not convert water AI or electrolyte dietary guidance into survival minima."
+
+  - id: DATA-0006
+    experiment_ids: [EXP-0001]
+    title: "Longer-horizon nutrient inventory family"
+    status: proposed
+    model_type: "indexed stock-process family"
+    variables:
+      - {symbol: "S_n(t)", class: Stock, meaning: "nutrient-specific body pool for n", units: null}
+      - {symbol: "F_n_ext(t)", class: ExternalInput, meaning: "exogenous nutrient n", units: null}
+      - {symbol: "T_n(t)", class: Process, meaning: "turnover/recycling/utilization for nutrient n", units: null}
+      - {symbol: "H_n", class: ReplenishmentHorizon, meaning: "nutrient-specific replenishment horizon", units: "time or unknown"}
+    relationships:
+      represents_claims: [BIO-0008, BIO-0009, BIO-0010]
+      depends_on_claims: [BIO-0001, BIO-0007]
+      used_by: []
+    assumptions: ["No aggregate micronutrient stock is interpreted as a physically homogeneous pool."]
+    equations:
+      - "dS_n/dt=F_n_ext+recycling_n-utilization_n-loss_n."
+      - "n must be decomposed before quantitative parameterization when stores/turnover differ materially."
+    uncertainty: ["Many S_n(t0), H_n, thresholds and rates are intentionally missing pending nutrient-specific Biology claims/evidence."]
+    notes: "Prevents essentiality from becoming a same-day ingestion rule."
+
+  - id: DATA-0007
+    experiment_ids: [EXP-0001]
+    title: "Thermal homeostasis and conditional external support"
+    status: proposed
+    model_type: "heat-balance constrained-state model"
+    variables:
+      - {symbol: "x_T(t)", class: State, meaning: "core thermal state", units: null}
+      - {symbol: "Q_met(t)", class: Flow, meaning: "metabolic heat production", units: null}
+      - {symbol: "Q_rad(t)", class: Flow, meaning: "radiative heat exchange", units: null}
+      - {symbol: "Q_conv(t)", class: Flow, meaning: "convective heat exchange", units: null}
+      - {symbol: "Q_cond(t)", class: Flow, meaning: "conductive heat exchange", units: null}
+      - {symbol: "Q_evap(t)", class: Flow, meaning: "evaporative heat exchange", units: null}
+      - {symbol: "e_thermal(t)", class: ExternalState, meaning: "temperature/humidity/radiation/wind and protective mechanisms", units: "vector"}
+    relationships:
+      represents_claims: [BIO-0011, BIO-0014]
+      depends_on_claims: [BIO-0001, BIO-0004, BIO-0005]
+      used_by: []
+    assumptions: ["External interventions are conditional; shelter/clothing are not intrinsic universal consumables."]
+    equations:
+      - "dH_body/dt=Q_met-(Q_rad+Q_conv+Q_cond+Q_evap), using signed terms under an explicit convention."
+      - "x_T(t) in A_T(z,outcome) is required when A_T is evidence-backed."
+      - "ExternalSupportRequired(t)=1{intrinsic thermoregulation plus current e_thermal cannot keep x_T in A_T}."
+    uncertainty: ["No universal ambient or core-temperature threshold is inserted."]
+    notes: "Allows multiple delivery mechanisms to satisfy the same environmental constraint."
+
+  - id: DATA-0008
+    experiment_ids: [EXP-0001]
+    title: "Waste processing, sleep state and outcome-layer constraints"
+    status: proposed
+    model_type: "process/state specification"
+    variables:
+      - {symbol: "F_waste_r(t)", class: Flow, meaning: "production/removal flow for waste species r", units: null}
+      - {symbol: "C_renal(t)", class: Capacity, meaning: "effective renal regulatory/excretory capacity", units: null}
+      - {symbol: "C_hepatic(t)", class: Capacity, meaning: "effective hepatic processing capacity", units: null}
+      - {symbol: "x_sleep(t0)", class: InitialState, meaning: "accumulated sleep/recovery state at experiment start", units: null}
+      - {symbol: "P_sleep(t)", class: Process, meaning: "sleep/recovery process", units: null}
+    relationships:
+      represents_claims: [BIO-0012, BIO-0013]
+      depends_on_claims: [BIO-0004, BIO-0005, BIO-0006]
+      used_by: []
+    assumptions: ["Internal excretion is distinct from external sanitation infrastructure.", "Sleep outcome constraints in Biology_1 concern function/long-term health, not a demonstrated 24-hour survival minimum."]
+    equations:
+      - "waste_state_r(t)=K_r(production_r,removal_r,C_renal,C_hepatic,z), K_r unresolved."
+      - "Outcome_sleep(W)=J(x_sleep(t0),P_sleep over W,z,outcome_class), J unresolved."
+    uncertainty: ["Waste-specific tolerances and quantitative sleep-state dynamics remain unknown."]
+    notes: "Prevents urination/stool frequency from substituting for excretory physiology and sleep guidance from becoming a survival threshold."
