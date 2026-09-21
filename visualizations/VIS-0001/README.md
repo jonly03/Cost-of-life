@@ -63,10 +63,10 @@ The internal grammar distinguishes four non-interchangeable object classes:
 
 - **Stocks** — accumulated quantities such as body water, glycogen/adipose substrate, whole-body electrolyte inventories, and canonical body-protein/tissue inventory.
 - **States** — regulated conditions such as osmolality/hydration state, compartment electrolyte gradients, and core thermal state.
-- **Processes** — transformations and transport such as ATP turnover/metabolism, circulation, gas exchange, renal processing, and sleep/recovery.
+- **Processes** — transformations and transport such as ATP turnover/metabolism, circulation, gas exchange, and renal processing. Sleep/recovery remains a process/state dependency but is visually qualified at the **function / health** outcome layer rather than encoded as a coequal demonstrated acute 24-hour viability process.
 - **Capacities** — abilities that constrain processes, such as respiratory, cardiovascular, renal, and thermoregulatory capacity.
 
-Stocks can buffer flows. States can remain viable while stocks change. Processes can be continuously required without being commodities. Capacities can constrain viability without being consumed.
+Stocks can buffer flows. States can remain viable while stocks change. Processes can be continuously required without being commodities. Capacities can constrain viability without being consumed. Process membership alone does not establish the same outcome threshold: BIO-0013/DATA-0008 place sleep/recovery at function and longer-horizon health layers, with no demonstrated universal acute 24-hour survival threshold.
 
 ### Timescale ribbon
 
@@ -164,6 +164,16 @@ Three targeted clarity corrections were made after reconciliation:
 Oxygen, water/metabolic-water provenance, Output/Elimination, and the open-ended environmental surface were already represented consistently with the repaired canonical state and required no substantive visual correction.
 
 See `post-reconciliation-audit.md` for the element-by-element audit and canonical basis.
+
+## RT-0009 narrow revision
+
+**RT-0009 accepted by the Research Director.** The primary diagram previously rendered `sleep / recovery` with the same undifferentiated capsule treatment as ATP/metabolism, circulation, gas exchange, and renal processing. Although the underlying process classification was valid, that visual parity could imply a coequal acute 24-hour viability requirement.
+
+The sleep/recovery capsule is now minimally distinguished with a dashed/neutral treatment and the explicit qualifier **function / health**. No sleep quantity, duration, acute survival threshold, or claim of irrelevance is introduced.
+
+Canonical basis: BIO-0013; DATA-0008; RT-0009.
+
+**Mechanical re-check requested:** Red Team should inspect only the changed sleep/recovery process capsule and confirm that it no longer implies a demonstrated universal acute 24-hour survival requirement while preserving sleep/recovery as a process/state dependency.
 
 ## Current review posture
 

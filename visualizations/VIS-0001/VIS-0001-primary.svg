@@ -74,7 +74,7 @@
 <rect x="855" y="482" width="188" height="54" rx="27" fill="#dfe9ef" stroke="#6d8594" stroke-width="2"/><text x="896" y="516" class="small">circulation</text>
 <rect x="855" y="550" width="188" height="54" rx="27" fill="#dfe9ef" stroke="#6d8594" stroke-width="2"/><text x="874" y="584" class="small">gas exchange</text>
 <rect x="855" y="618" width="188" height="54" rx="27" fill="#dfe9ef" stroke="#6d8594" stroke-width="2"/><text x="880" y="652" class="small">renal processing</text>
-<rect x="855" y="686" width="188" height="54" rx="27" fill="#dfe9ef" stroke="#6d8594" stroke-width="2"/><text x="884" y="720" class="small">sleep / recovery</text>
+<rect x="855" y="686" width="188" height="54" rx="27" fill="#f4f1e9" stroke="#6d8594" stroke-width="2" stroke-dasharray="7 6"/><text x="884" y="708" class="small">sleep / recovery</text><text x="872" y="730" class="small muted">function / health</text>
 
 <text x="1080" y="385" class="label">CAPACITIES</text>
 <path d="M1090 415 h24 v250 h-24 M1114 415 h78 M1114 665 h78" fill="none" stroke="#7b6c91" stroke-width="4"/>
