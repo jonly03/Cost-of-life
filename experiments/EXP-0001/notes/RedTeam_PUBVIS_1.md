@@ -142,3 +142,36 @@ No additional caveat layer is required.
 Return RT-0009 to the Publication and Visualization desks for narrow correction. Do not rewrite or redesign the package wholesale. After both owning desks correct the outcome-layer implication, Red Team should mechanically verify the changed sentence/visual element and rerun the combined 15-second test.
 
 This audit does not authorize external publication. Final release authority remains with the human PI.
+
+
+---
+
+## 13. Final-state normalization after RT-0009 correction
+
+**Documentation status:** Mechanical final-state update only. The audit was not rerun, no scientific finding was changed, and no new challenge was introduced.
+
+The **HOLD FOR REVISION** recorded above is preserved as the original audit disposition before correction. Publication and Visualization subsequently made the narrow corrections required by RT-0009, and Red Team mechanically verified only the changed elements plus the combined 15-second test.
+
+### RT-0009 final disposition
+
+**RT-0009 — RESOLVED**
+
+- **Corrected PUB passage:** **PASS** — the synthesis now separates acute organism viability / physiological stability during the 24-hour observation window from sleep/recovery evidence at function and longer-horizon health layers, and does not establish a universal acute 24-hour sleep survival minimum.
+- **Corrected VIS encoding:** **PASS** — sleep/recovery is visually distinguished from acute-process capsules with a dashed/neutral treatment and the explicit qualifier **function / health**.
+- **Combined 15-second test:** **FAITHFUL** — the corrected package no longer communicates sleep/recovery as a coequal demonstrated acute 24-hour viability requirement.
+
+### Updated final confirmations for the corrected package
+
+| Acceptance question | Final answer |
+|---|---|
+| Are outcome layers kept sufficiently distinct? | **YES** |
+| Does RT-0009 leave an identified material stronger-than-core public implication? | **NO** |
+| Combined 15-second classification | **FAITHFUL** |
+
+### Final Red Team disposition after correction
+
+**CLEAR FOR PI REVIEW**
+
+The sole blocking public-translation defect identified by this audit, RT-0009, has been corrected and mechanically verified. The original finding and historical HOLD remain documented above as audit history; they are not the current disposition.
+
+No further Red Team review is required unless PUB-0001, VIS-0001, or relevant scientific content changes. External publication remains subject to human PI review/authorization.
