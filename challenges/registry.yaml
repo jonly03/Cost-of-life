@@ -129,5 +129,6 @@ challenges:
     likely_public_misunderstanding: "A reasonable reader/viewer may conclude that Scientific Core v0.1 established sleep/recovery as an acute requirement for staying alive through the 24-hour observation window, rather than a function/health dependency whose quantitative sleep-state dynamics and acute survival threshold remain unresolved."
     model_consequence_if_valid: "Public translation would be stronger than Scientific Core v0.1 at the outcome layer and would undermine the explicit viability/function/health distinction."
     required_correction: "PUB: separate acute/viability dependencies from longer-horizon function/health dependencies in the summary sentence. VIS: qualify sleep/recovery as function/health or otherwise visually prevent it from reading as coequal evidence for 24-hour viability. No new threshold or redesign is required."
-    status: open
-    relationships: {challenges: [BIO-0013, DATA-0008], supported_by: [REF-0010, REF-0018], resolved_by: []}
+    status: resolved
+    relationships: {challenges: [BIO-0013, DATA-0008], supported_by: [REF-0010, REF-0018], resolved_by: [PUB-0001, VIS-0001] }
+    resolution: "Mechanical re-check passed. PUB-0001 now separates acute viability/stability dependencies from sleep/recovery evidence at function and longer-horizon health layers and explicitly denies a universal acute 24-hour sleep survival minimum. VIS-0001 now gives sleep/recovery a dashed/neutral process treatment with the explicit qualifier 'function / health', preventing coequal acute-viability interpretation. Combined 15-second test passes: a fast reader/viewer is no longer led to infer that Scientific Core v0.1 established sleep as an acute 24-hour survival requirement."
