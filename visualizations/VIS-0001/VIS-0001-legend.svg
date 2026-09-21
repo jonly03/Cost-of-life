@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="820" viewBox="0 0 1500 820" role="img" aria-labelledby="title desc">
+<title id="title">VIS-0001 visual grammar</title><desc id="desc">Legend defining graphical symbols for stocks, flows, states, processes, capacities, environmental conditions, uncertainty, and timescale.</desc>
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#243447"/></marker><style>text{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fill:#17212b}.h1{font-size:44px;font-weight:800}.h2{font-size:25px;font-weight:750}.body{font-size:19px}.muted{fill:#607181}</style></defs>
+<rect width="1500" height="820" fill="#f7f5f0"/>
+<text x="75" y="75" class="h1">The Cost of Life — visual grammar v0.1</text>
+<text x="77" y="112" class="body muted">A reusable language for showing biological dependencies without turning them into commodity lists.</text>
+
+<!-- row 1 -->
+<path d="M90 195 h180 v95 q0 22 -22 22 h-136 q-22 0 -22 -22 z" fill="#f0e4cb" stroke="#9a8052" stroke-width="2"/><path d="M90 220 q90 20 180 0" fill="none" stroke="#b99c67" stroke-width="2"/>
+<text x="300" y="218" class="h2">Stock</text><text x="300" y="250" class="body">Accumulated quantity within a declared boundary.</text><text x="300" y="280" class="body muted">Example: body water; canonical body-protein inventory.</text>
+
+<line x1="835" y1="245" x2="1035" y2="245" stroke="#243447" stroke-width="5" marker-end="url(#a)"/>
+<text x="1065" y="218" class="h2">Flow</text><text x="1065" y="250" class="body">Transfer, input, output, production, or throughput.</text><text x="1065" y="280" class="body muted">Crossing the organism boundary does not imply purchase.</text>
+
+<!-- row 2 -->
+<circle cx="180" cy="410" r="78" fill="#f3e5e4" stroke="#9c6d69" stroke-width="3"/><circle cx="180" cy="410" r="48" fill="none" stroke="#c49b98" stroke-width="2" stroke-dasharray="7 6"/>
+<text x="300" y="385" class="h2">Bounded state</text><text x="300" y="418" class="body">Condition that must remain within an admissible range.</text><text x="300" y="448" class="body muted">Bounds may be known structurally while numeric thresholds remain unresolved.</text>
+
+<rect x="820" y="374" width="220" height="72" rx="36" fill="#dfe9ef" stroke="#6d8594" stroke-width="2"/>
+<text x="1065" y="385" class="h2">Process</text><text x="1065" y="418" class="body">Activity or transformation through time.</text><text x="1065" y="448" class="body muted">May be continuously required without being a consumable.</text>
+
+<!-- row 3 -->
+<path d="M105 555 h26 v145 h-26 M131 555 h100 M131 700 h100" fill="none" stroke="#7b6c91" stroke-width="4"/>
+<text x="300" y="580" class="h2">Capacity</text><text x="300" y="613" class="body">Ability to perform a process or sustain a flow.</text><text x="300" y="643" class="body muted">Ability is not the same as realized throughput.</text>
+
+<rect x="820" y="545" width="220" height="120" rx="20" fill="#d8e6eb" stroke="#6f8794" stroke-width="2"/>
+<text x="855" y="596" class="body">environment</text><text x="855" y="625" class="body">condition</text>
+<text x="1065" y="580" class="h2">Environmental condition</text><text x="1065" y="613" class="body">External condition that enables or constrains viability.</text><text x="1065" y="643" class="body muted">Not automatically a commodity, building, or infrastructure asset.</text>
+
+<!-- footer -->
+<line x1="80" y1="748" x2="250" y2="748" stroke="#607181" stroke-width="3" stroke-dasharray="8 7"/><text x="270" y="755" class="body">dashed = unresolved / incomplete / conditional</text>
+<line x1="790" y1="748" x2="960" y2="748" stroke="#243447" stroke-width="4"/><circle cx="875" cy="748" r="8" fill="#243447"/><text x="985" y="755" class="body">timeline = dependency-specific horizon, not default daily cadence</text>
+</svg>
