@@ -1,0 +1,26 @@
+id: REF-0000
+citation: ""
+persistent_identifier:
+  doi: null
+  url: null
+  isbn: null
+  other: null
+publication_date: null
+source_type: ""
+evidence_level: null
+authors_or_institution: []
+population: ""
+geography: ""
+sample_size: null
+methodology: ""
+relevant_variables: []
+relationships:
+  supports: []
+  challenges: []
+  used_by_desks: []
+  experiment_ids: []
+limitations: []
+quality:
+  rating: null
+  rationale: ""
+date_last_verified: null

@@ -1,0 +1,17 @@
+id: EXP-0000
+title: ""
+status: proposed
+observation_window: null
+system_boundary:
+  summary: ""
+objectives: []
+research_questions: []
+included_domains: []
+excluded_domains: []
+dependencies: []
+claim_ids: []
+model_ids: []
+source_ids: []
+challenge_ids: []
+decision_ids: []
+version: "0.1"

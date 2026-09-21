@@ -1,0 +1,41 @@
+id: BIO-0000
+experiment_ids: [EXP-0001]
+claim: ""
+claim_type: null
+status: proposed
+variable_or_dependency: ""
+dependency_class: []
+system_boundary: ""
+observation_window: ""
+replenishment_horizon: ""
+quantity_role: null
+population:
+  age: null
+  sex: null
+  body_mass: null
+  body_composition: null
+  health_status: null
+  activity_level: null
+  climate: null
+  altitude: null
+  pregnancy_lactation: null
+  notes: null
+threshold_type: []
+value: null
+range: null
+units: null
+assumptions: []
+uncertainty:
+  type: []
+  notes: ""
+limitations: []
+relationships:
+  supported_by: []
+  challenged_by: []
+  depends_on: []
+  represented_by: []
+  used_by: []
+  supersedes: []
+  superseded_by: []
+peom_implication: ""
+version: 1

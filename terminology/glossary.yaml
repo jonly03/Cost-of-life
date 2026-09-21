@@ -1,0 +1,7 @@
+schema_version: "0.1"
+terms:
+  - id: TERM-0001
+    term: "Inventory Blindness"
+    status: proposed
+    definition: "The error of inferring an external replenishment requirement directly from observed usage without accounting for stored reserves."
+    experiment_ids: [EXP-0001]

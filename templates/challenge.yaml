@@ -1,0 +1,15 @@
+id: RT-0000
+experiment_ids: [EXP-0001]
+target_claim_ids: []
+challenge_type: null
+challenge: ""
+severity: null
+evidence:
+  source_ids: []
+model_consequence_if_valid: ""
+proposed_resolution: ""
+status: open
+relationships:
+  challenges: []
+  supported_by: []
+  resolved_by: []

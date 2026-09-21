@@ -1,0 +1,14 @@
+id: DATA-0000
+experiment_ids: [EXP-0001]
+title: ""
+status: proposed
+model_type: ""
+variables: []
+relationships:
+  represents_claims: []
+  depends_on_claims: []
+  used_by: []
+assumptions: []
+equations: []
+uncertainty: []
+notes: ""
