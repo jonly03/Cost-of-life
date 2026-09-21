@@ -1,2 +1,105 @@
 schema_version: "0.1"
-challenges: []
+challenges:
+  - id: RT-0001
+    experiment_ids: [EXP-0001]
+    target_claim_ids: [BIO-0002, DATA-0004]
+    challenge_type: source_to_claim_overreach
+    challenge: "BIO-0002 says humans possess no physiologically meaningful oxygen store. That wording is stronger than the registered evidence supports and is literally misleading: oxygen is stored transiently in lungs, hemoglobin-bound blood and myoglobin. Those stores are small and cannot replace sustained environmental oxygen delivery, but they are physiologically meaningful over seconds-to-minutes and during apnea. DATA-0004 compounds the issue by assuming no meaningful oxygen inventory."
+    severity: medium
+    evidence:
+      source_ids: [REF-0001, REF-0016]
+    model_consequence_if_valid: "Omitting all oxygen inventory forces an instantaneous external-input model and cannot represent short interruptions, apnea, preoxygenation, or initial oxygen state. It does not invalidate the conclusion that sustained viability requires continuing oxygen access."
+    proposed_resolution: "Revise BIO-0002 to distinguish finite short-duration internal oxygen stores from the absence of a store capable of sustaining 24-hour metabolism. In DATA-0004 permit a small O2 inventory/state when the modeled timescale requires it; leave magnitude unparameterized until evidence is registered."
+    status: open
+    relationships: {challenges: [BIO-0002, DATA-0004], supported_by: [REF-0001, REF-0016], resolved_by: []}
+
+  - id: RT-0002
+    experiment_ids: [EXP-0001]
+    target_claim_ids: [BIO-0005, DATA-0005]
+    challenge_type: stock_flow_and_source_to_claim_overreach
+    challenge: "BIO-0005 states that water losses must eventually be replaced from external water contained in fluids and food. This excludes metabolic water as a source even though DATA-0005 explicitly includes F_metabolic. The biological requirement is maintenance/restoration of body-water state, not molecule-for-molecule replacement of losses by preformed external water."
+    severity: high
+    evidence:
+      source_ids: [REF-0004, REF-0013, REF-0019]
+    model_consequence_if_valid: "A downstream PEOM could overstate direct external water requirement by equating net water loss with preformed drinking/food water input and could double-count water embodied in oxidized substrate."
+    proposed_resolution: "Revise BIO-0005 to say body-water balance can be supported by preformed water intake plus metabolic water, with required external preformed-water input conditional on initial state, metabolic production and losses. Keep DATA-0005's metabolic-water term and define its provenance from substrate oxidation."
+    status: open
+    relationships: {challenges: [BIO-0005, DATA-0005], supported_by: [REF-0004, REF-0013, REF-0019], resolved_by: []}
+
+  - id: RT-0003
+    experiment_ids: [EXP-0001]
+    target_claim_ids: [BIO-0008, DATA-0006]
+    challenge_type: stock_category_error
+    challenge: "The essential-amino-acid dependency is valid, but DATA-0006's generic nutrient stock S_n risks treating indispensable amino acids as if they had a dedicated reserve analogous to adipose or vitamin stores. The free amino-acid pool is dynamic and short-lived; fasting supply can come from turnover and catabolism of body protein, which is tissue with functional consequences, not a costless nutrient inventory."
+    severity: high
+    evidence:
+      source_ids: [REF-0003]
+    model_consequence_if_valid: "A generic stock model can overestimate available amino-acid reserve, hide lean-tissue depletion, and make the replenishment horizon appear longer or safer than the physiology supports."
+    proposed_resolution: "For amino acids, separate free amino-acid pools from body-protein/tissue stocks and represent proteolysis, synthesis, oxidation and nitrogen loss explicitly. Do not assign a replenishment horizon until stronger turnover evidence is registered."
+    status: open
+    relationships: {challenges: [BIO-0008, DATA-0006], supported_by: [REF-0003], resolved_by: []}
+
+  - id: RT-0004
+    experiment_ids: [EXP-0001]
+    target_claim_ids: [BIO-0009]
+    challenge_type: unsupported_replenishment_horizon
+    challenge: "BIO-0009 records the essential-fatty-acid replenishment horizon as 'longer than 24 hours under ordinary stocked conditions.' Evidence Base v0.1 explicitly says the exact healthy-person depletion horizon remains unresolved, while REF-0022 is primarily parenteral-nutrition deficiency literature. The qualitative anti-calendar conclusion is supportable; the >24-hour horizon for an ordinary stocked population is not yet adequately sourced in the registered corpus."
+    severity: high
+    evidence:
+      source_ids: [REF-0003, REF-0022]
+    model_consequence_if_valid: "The model could admit zero essential-fatty-acid input during W as evidence-backed for a population broader than the evidence supports, turning an unresolved horizon into a validated boundary condition."
+    proposed_resolution: "Set BIO-0009 replenishment_horizon to unresolved/likely longer than the observation window only where directly supported, or register primary healthy-adult evidence before retaining the >24-hour assertion. Preserve the weaker claim that essentiality does not itself imply same-calendar-day ingestion."
+    status: open
+    relationships: {challenges: [BIO-0009], supported_by: [REF-0003, REF-0022], resolved_by: []}
+
+  - id: RT-0005
+    experiment_ids: [EXP-0001]
+    target_claim_ids: [BIO-0003, BIO-0012, DATA-0002]
+    challenge_type: category_error
+    challenge: "BIO-0003 and BIO-0012 label elimination/excretion as quantity_role 'Consumption', and DATA-0002 defines Consumption broadly enough to include elimination. That collapses materially different concepts: production/throughput, excretion/output, depletion of a stock, and consumption of an input. The distinction matters when the graph is later mapped to resources and costs."
+    severity: high
+    evidence:
+      source_ids: [REF-0015, REF-0020]
+    model_consequence_if_valid: "Downstream accounting can misclassify waste outputs as consumed resources, obscure mass balance, and create double counting when both substrate consumption and waste elimination are represented."
+    proposed_resolution: "Add an Output/Elimination quantity role (or equivalent) distinct from Consumption. Reclassify CO2 elimination and renal excretion accordingly. Reserve Consumption for defined use/depletion semantics and document whether it applies to internal stock use, external input use, or both."
+    status: open
+    relationships: {challenges: [BIO-0003, BIO-0012, DATA-0002], supported_by: [REF-0015, REF-0020], resolved_by: []}
+
+  - id: RT-0006
+    experiment_ids: [EXP-0001]
+    target_claim_ids: [DATA-0005, BIO-0006]
+    challenge_type: stock_flow_confusion
+    challenge: "DATA-0005 defines S_electrolyte_n as a nutrient/compartment-specific electrolyte inventory but uses dS_electrolyte_n/dt = F_intake_n + F_internal_n - F_loss_n. If S is total-body inventory, internal redistribution cannot change it and F_internal_n double-counts conserved transfers. If S is compartment-specific, internal flows must be paired source/sink transfers between explicit compartments."
+    severity: high
+    evidence:
+      source_ids: [REF-0004, REF-0005, REF-0015, REF-0019]
+    model_consequence_if_valid: "The current equation can create or destroy electrolyte mass mathematically, violating conservation and corrupting both stock estimates and replenishment calculations."
+    proposed_resolution: "Choose the stock boundary explicitly. For total-body electrolyte stock, omit net internal transfer except true biochemical source/sink terms. For compartment stocks, model a transfer matrix whose internal flows sum to zero across the whole-body boundary."
+    status: open
+    relationships: {challenges: [DATA-0005, BIO-0006], supported_by: [REF-0004, REF-0005, REF-0015, REF-0019], resolved_by: []}
+
+  - id: RT-0007
+    experiment_ids: [EXP-0001]
+    target_claim_ids: [DATA-0003, DATA-0006, BIO-0007, BIO-0008]
+    challenge_type: double_counting
+    challenge: "DATA-0003 introduces S_pro as mobilizable protein/tissue substrate while DATA-0006 can independently introduce nutrient stocks for amino acids. Without an ownership rule, the same body protein can be counted once as energy substrate reserve and again as an indispensable-amino-acid reserve."
+    severity: high
+    evidence:
+      source_ids: [REF-0002, REF-0003, REF-0014, REF-0017]
+    model_consequence_if_valid: "Reserve availability can be overstated and mass/energy/nitrogen accounting can diverge. A later cost model could treat one physical tissue inventory as two independent buffers."
+    proposed_resolution: "Use one canonical body-protein stock (possibly tissue-indexed) with multiple outgoing transformations: amino-acid release, protein turnover and oxidation. DATA-0003 and DATA-0006 should reference the same stock rather than instantiate independent reserves."
+    status: open
+    relationships: {challenges: [DATA-0003, DATA-0006, BIO-0007, BIO-0008], supported_by: [REF-0002, REF-0003, REF-0014, REF-0017], resolved_by: []}
+
+  - id: RT-0008
+    experiment_ids: [EXP-0001]
+    target_claim_ids: [BIO-0014, DATA-0004, DATA-0007]
+    challenge_type: unjustified_universality_and_incomplete_hazard_surface
+    challenge: "BIO-0014 is defensible as a conceptual boundary-condition claim but is too broad for Validated-for-model-use as a complete viable-environment specification. Evidence Base v0.1 explicitly leaves contaminants, pressure bounds and other hazards incomplete. DATA-0004 and DATA-0007 cover respiratory and thermal dimensions but do not exhaust tissue-integrity hazards."
+    severity: medium
+    evidence:
+      source_ids: [REF-0001, REF-0011, REF-0012, REF-0016, REF-0021]
+    model_consequence_if_valid: "Treating BIO-0014 as complete could falsely imply that the modeled environmental constraint set is exhaustive, causing omitted hazards to disappear from later resource/infrastructure mapping."
+    proposed_resolution: "Validate BIO-0014 only as an umbrella/decomposition claim. Mark the environmental admissible set open-ended and require hazard-specific child claims before quantitative or completeness-sensitive use."
+    status: open
+    relationships: {challenges: [BIO-0014, DATA-0004, DATA-0007], supported_by: [REF-0001, REF-0011, REF-0012, REF-0016, REF-0021], resolved_by: []}
