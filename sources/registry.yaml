@@ -1,2 +1,392 @@
 schema_version: "0.1"
-sources: []
+sources:
+  - id: REF-0001
+    citation: "Pittman RN. Regulation of Tissue Oxygenation. San Rafael (CA): Morgan & Claypool Life Sciences; 2011."
+    persistent_identifier: {doi: null, url: "https://www.ncbi.nlm.nih.gov/books/NBK54104/", isbn: null, other: "PMID:21634070; NCBI Bookshelf:NBK54104"}
+    publication_date: "2011"
+    source_type: "academic physiology monograph"
+    evidence_level: "authoritative mechanistic synthesis"
+    authors_or_institution: ["Roland N. Pittman"]
+    population: "Human/mammalian oxygen transport physiology"
+    geography: "General physiology"
+    sample_size: null
+    methodology: "Scholarly synthesis of respiratory, cardiovascular, microcirculatory and cellular oxygen-transport literature."
+    relevant_variables: ["oxygen delivery", "oxygen consumption", "hemoglobin", "perfusion", "diffusion", "mitochondrial respiration"]
+    relationships: {supports: ["BIO-0002", "BIO-0004"], challenges: [], used_by_desks: ["research/biology", "research/data-modeling", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Secondary synthesis.", "Tissue critical PO2 cannot be substituted for a universal ambient oxygen threshold."]
+    quality: {rating: "high", rationale: "Focused scholarly monograph indexed by NCBI and grounded in primary physiology literature."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0002
+    citation: "FAO/WHO/UNU. Human Energy Requirements. FAO Food and Nutrition Technical Report Series 1. Rome: FAO; 2004."
+    persistent_identifier: {doi: null, url: "https://www.fao.org/4/y5686e/y5686e00.htm", isbn: "92-5-105212-3", other: "ISSN 1813-3932"}
+    publication_date: "2004"
+    source_type: "international expert consultation report"
+    evidence_level: "authoritative consensus synthesis"
+    authors_or_institution: ["FAO", "WHO", "United Nations University"]
+    population: "Humans across life stages, including pregnancy and lactation"
+    geography: "International"
+    sample_size: null
+    methodology: "Expert review of energy expenditure, basal metabolism, activity, growth, pregnancy and lactation."
+    relevant_variables: ["energy requirement", "TEE", "BMR", "physical activity", "age", "sex", "body size", "pregnancy", "lactation"]
+    relationships: {supports: ["BIO-0001", "BIO-0007"], challenges: [], used_by_desks: ["research/biology", "research/data-modeling", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Reference energy requirements concern energy balance/health; they do not establish mandatory food intake in each 24-hour window."]
+    quality: {rating: "high", rationale: "Joint international expert report with explicit definitions and life-stage stratification."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0003
+    citation: "Institute of Medicine. Dietary Reference Intakes for Energy, Carbohydrate, Fiber, Fat, Fatty Acids, Cholesterol, Protein, and Amino Acids. National Academies Press; 2005."
+    persistent_identifier: {doi: "10.17226/10490", url: "https://www.nationalacademies.org/publications/10490", isbn: null, other: null}
+    publication_date: "2005"
+    source_type: "National Academies consensus report"
+    evidence_level: "authoritative evidence synthesis"
+    authors_or_institution: ["Institute of Medicine", "Food and Nutrition Board"]
+    population: "Healthy humans across the life span"
+    geography: "United States and Canada reference framework"
+    sample_size: null
+    methodology: "Committee evidence review and DRI derivation for energy and macronutrients."
+    relevant_variables: ["energy", "protein", "indispensable amino acids", "fat", "essential fatty acids", "carbohydrate"]
+    relationships: {supports: ["BIO-0007", "BIO-0008", "BIO-0009"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["DRIs are planning/assessment reference values, not acute survival minima or proof of same-day replenishment."]
+    quality: {rating: "high", rationale: "National Academies consensus process with nutrient-specific evidence review."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0004
+    citation: "Institute of Medicine. Dietary Reference Intakes for Water, Potassium, Sodium, Chloride, and Sulfate. National Academies Press; 2005."
+    persistent_identifier: {doi: "10.17226/10925", url: "https://www.nationalacademies.org/publications/10925", isbn: "0-309-09169-1", other: null}
+    publication_date: "2005"
+    source_type: "National Academies consensus report"
+    evidence_level: "authoritative evidence synthesis"
+    authors_or_institution: ["Institute of Medicine", "Food and Nutrition Board"]
+    population: "Healthy humans across life stages"
+    geography: "United States and Canada reference framework"
+    sample_size: null
+    methodology: "Evidence review of water/electrolyte physiology, intake, losses, balance and health endpoints."
+    relevant_variables: ["total water", "water losses", "osmolality", "sodium", "potassium", "chloride"]
+    relationships: {supports: ["BIO-0005", "BIO-0006"], challenges: [], used_by_desks: ["research/biology", "research/data-modeling", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Water AIs substantially reflect observed healthy-population intakes, not a precise minimum physiological requirement.", "Total water includes beverages and food moisture."]
+    quality: {rating: "high", rationale: "Authoritative consensus source integrating physiology, losses and reference-intake methodology."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0005
+    citation: "National Academies of Sciences, Engineering, and Medicine. Dietary Reference Intakes for Sodium and Potassium. National Academies Press; 2019."
+    persistent_identifier: {doi: "10.17226/25353", url: "https://www.nationalacademies.org/read/25353", isbn: "978-0-309-48834-1", other: null}
+    publication_date: "2019"
+    source_type: "National Academies consensus report"
+    evidence_level: "authoritative evidence synthesis"
+    authors_or_institution: ["National Academies of Sciences, Engineering, and Medicine"]
+    population: "Healthy humans across life stages"
+    geography: "United States and Canada reference framework"
+    sample_size: null
+    methodology: "Updated DRI evidence review for sodium and potassium."
+    relevant_variables: ["sodium", "potassium", "adequate intake", "chronic disease risk reduction"]
+    relationships: {supports: ["BIO-0006"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Usual dietary reference values are not direct one-day external-replenishment thresholds."]
+    quality: {rating: "high", rationale: "Current National Academies sodium/potassium review using contemporary DRI framework."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0006
+    citation: "Institute of Medicine. Dietary Reference Intakes for Thiamin, Riboflavin, Niacin, Vitamin B6, Folate, Vitamin B12, Pantothenic Acid, Biotin, and Choline. National Academies Press; 1998."
+    persistent_identifier: {doi: "10.17226/6015", url: "https://www.nationalacademies.org/read/6015", isbn: null, other: null}
+    publication_date: "1998"
+    source_type: "National Academies consensus report"
+    evidence_level: "authoritative evidence synthesis"
+    authors_or_institution: ["Institute of Medicine", "Food and Nutrition Board"]
+    population: "Healthy humans across life stages"
+    geography: "United States and Canada"
+    sample_size: null
+    methodology: "Nutrient-specific review of function, deficiency, adequacy and toxicity."
+    relevant_variables: ["B vitamins", "folate", "vitamin B12", "choline"]
+    relationships: {supports: ["BIO-0010"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Body stores and deficiency horizons differ markedly; DRI values do not imply daily external necessity."]
+    quality: {rating: "high", rationale: "Authoritative nutrient-specific consensus review."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0007
+    citation: "Institute of Medicine. Dietary Reference Intakes for Vitamin C, Vitamin E, Selenium, and Carotenoids. National Academies Press; 2000."
+    persistent_identifier: {doi: "10.17226/9810", url: "https://www.nationalacademies.org/publications/9810", isbn: "0-309-06935-1", other: null}
+    publication_date: "2000"
+    source_type: "National Academies consensus report"
+    evidence_level: "authoritative evidence synthesis"
+    authors_or_institution: ["Institute of Medicine", "Food and Nutrition Board"]
+    population: "Healthy humans across life stages"
+    geography: "United States and Canada"
+    sample_size: null
+    methodology: "Review of function, biomarkers, deficiency, adequacy and adverse effects."
+    relevant_variables: ["vitamin C", "vitamin E", "selenium", "carotenoids"]
+    relationships: {supports: ["BIO-0010"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["No quantitative requirement established for all compounds discussed.", "Reference intakes should not be calendar-forced into same-day replenishment."]
+    quality: {rating: "high", rationale: "Authoritative nutrient-specific consensus review."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0008
+    citation: "Institute of Medicine. Dietary Reference Intakes for Vitamin A, Vitamin K, Arsenic, Boron, Chromium, Copper, Iodine, Iron, Manganese, Molybdenum, Nickel, Silicon, Vanadium, and Zinc. National Academies Press; 2001."
+    persistent_identifier: {doi: "10.17226/10026", url: "https://www.nationalacademies.org/read/10026", isbn: null, other: null}
+    publication_date: "2001"
+    source_type: "National Academies consensus report"
+    evidence_level: "authoritative evidence synthesis"
+    authors_or_institution: ["Institute of Medicine", "Food and Nutrition Board"]
+    population: "Healthy humans across life stages"
+    geography: "United States and Canada"
+    sample_size: null
+    methodology: "Review of physiological roles, deficiency, biomarkers, intake and toxicity."
+    relevant_variables: ["vitamin A", "vitamin K", "iron", "iodine", "zinc", "copper", "trace elements"]
+    relationships: {supports: ["BIO-0010"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["The report does not establish recommendations for every element discussed.", "Reference values are not one-day survival minima."]
+    quality: {rating: "high", rationale: "Comprehensive National Academies micronutrient synthesis."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0009
+    citation: "Institute of Medicine. Dietary Reference Intakes for Calcium, Phosphorus, Magnesium, Vitamin D, and Fluoride. National Academy Press; 1997."
+    persistent_identifier: {doi: "10.17226/5776", url: "https://www.nationalacademies.org/read/5776", isbn: null, other: null}
+    publication_date: "1997"
+    source_type: "National Academies consensus report"
+    evidence_level: "authoritative evidence synthesis"
+    authors_or_institution: ["Institute of Medicine", "Food and Nutrition Board"]
+    population: "Healthy humans across life stages"
+    geography: "United States and Canada"
+    sample_size: null
+    methodology: "DRI evidence review for major minerals, vitamin D and fluoride."
+    relevant_variables: ["calcium", "phosphorus", "magnesium", "vitamin D", "fluoride", "body stores"]
+    relationships: {supports: ["BIO-0010"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Calcium/vitamin D later reassessed in 2011.", "Large stores/slow turnover make daily intake a poor proxy for immediate replenishment."]
+    quality: {rating: "moderate-high", rationale: "Foundational authoritative DRI report; some components superseded by later reassessment."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0010
+    citation: "Watson NF, Badr MS, Belenky G, et al. Recommended Amount of Sleep for a Healthy Adult: A Joint Consensus Statement of the AASM and SRS. J Clin Sleep Med. 2015;11(6):591-592."
+    persistent_identifier: {doi: "10.5664/jcsm.4758", url: "https://pubmed.ncbi.nlm.nih.gov/25979105/", isbn: null, other: "PMID:25979105"}
+    publication_date: "2015"
+    source_type: "professional society consensus statement"
+    evidence_level: "expert consensus informed by evidence review"
+    authors_or_institution: ["American Academy of Sleep Medicine", "Sleep Research Society"]
+    population: "Healthy adults"
+    geography: "General adult-health evidence base"
+    sample_size: null
+    methodology: "Modified RAND appropriateness process informed by review of sleep duration and health outcomes."
+    relevant_variables: ["sleep duration", "health", "performance", "errors", "accidents"]
+    relationships: {supports: ["BIO-0013"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["The >=7 h recommendation concerns regular sleep for health; it is not a universal acute survival threshold."]
+    quality: {rating: "high for health guidance", rationale: "Joint consensus from major sleep-science societies with explicit methodology."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0011
+    citation: "Schlader ZJ, Stannard SR, Mündel T. Human thermoregulation during heat stress: biophysical aspects. Auton Neurosci. 2016;196:3-13."
+    persistent_identifier: {doi: null, url: "https://pubmed.ncbi.nlm.nih.gov/26971392/", isbn: null, other: "PMID:26971392"}
+    publication_date: "2016"
+    source_type: "peer-reviewed narrative review"
+    evidence_level: "mechanistic synthesis"
+    authors_or_institution: ["Zachary J. Schlader", "Stephen R. Stannard", "Toby Mündel"]
+    population: "Humans under environmental/exercise heat stress"
+    geography: "General physiology"
+    sample_size: null
+    methodology: "Review of heat balance, exchange, sweating and core-temperature regulation."
+    relevant_variables: ["core temperature", "metabolic heat", "evaporation", "convection", "radiation", "activity"]
+    relationships: {supports: ["BIO-0011", "BIO-0014"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Narrative review.", "Heat-focused; cold requires separate evidence."]
+    quality: {rating: "moderate-high", rationale: "Peer-reviewed review directly addressing human heat exchange and thermoregulation."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0012
+    citation: "Jacklitsch B, Williams WJ, Musolin K, Coca A, Kim JH, Turner N. Criteria for a Recommended Standard: Occupational Exposure to Heat and Hot Environments. DHHS (NIOSH) 2016-106; 2016."
+    persistent_identifier: {doi: null, url: "https://www.cdc.gov/niosh/docs/2016-106/default.html", isbn: null, other: "DHHS (NIOSH) Publication 2016-106"}
+    publication_date: "2016"
+    source_type: "government technical criteria document"
+    evidence_level: "authoritative occupational evidence synthesis"
+    authors_or_institution: ["NIOSH", "CDC"]
+    population: "Workers exposed to hot environments"
+    geography: "United States occupational context"
+    sample_size: null
+    methodology: "Evidence review for heat stress, exposure assessment, acclimatization, hydration, work/rest and controls."
+    relevant_variables: ["heat stress", "WBGT", "metabolic rate", "acclimatization", "hydration", "clothing"]
+    relationships: {supports: ["BIO-0011", "BIO-0014"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Protective occupational standard, not a universal human viability boundary."]
+    quality: {rating: "high for occupational heat safety", rationale: "Government criteria document based on scientific review and peer/public review."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0013
+    citation: "Yamada Y, Zhang X, Henderson MET, et al. Variation in human water turnover associated with environmental and lifestyle factors. Science. 2022;378(6622):909-915."
+    persistent_identifier: {doi: "10.1126/science.abm8668", url: "https://pubmed.ncbi.nlm.nih.gov/36423296/", isbn: null, other: "PMID:36423296; PMCID:PMC9764345"}
+    publication_date: "2022-11-25"
+    source_type: "primary multicountry pooled isotope study"
+    evidence_level: "large primary empirical dataset"
+    authors_or_institution: ["Yosuke Yamada et al.", "IAEA Doubly Labeled Water Database Consortium"]
+    population: "5,604 people aged 8 days to 96 years"
+    geography: "26 countries"
+    sample_size: 5604
+    methodology: "Hydrogen-isotope measurements of body water and turnover with multivariable analysis of individual/environmental determinants."
+    relevant_variables: ["water turnover", "total body water", "age", "sex", "fat-free mass", "energy expenditure", "activity", "temperature", "humidity", "altitude", "pregnancy"]
+    relationships: {supports: ["BIO-0005"], challenges: [], used_by_desks: ["research/biology", "research/data-modeling", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Water turnover is not oral drinking-water intake and does not define minimum survival intake."]
+    quality: {rating: "high", rationale: "Large international objectively measured dataset directly demonstrating heterogeneity in water turnover."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0014
+    citation: "Schuppelius B, Peters B, Ottawa A, Pivovarova-Ramich O. Complex physiology and clinical implications of time-restricted eating. Physiol Rev. 2023."
+    persistent_identifier: {doi: "10.1152/physrev.00006.2022", url: "https://journals.physiology.org/doi/10.1152/physrev.00006.2022", isbn: null, other: null}
+    publication_date: "2023"
+    source_type: "peer-reviewed comprehensive physiology review"
+    evidence_level: "mechanistic synthesis"
+    authors_or_institution: ["B. Schuppelius", "B. Peters", "A. Ottawa", "O. Pivovarova-Ramich"]
+    population: "Human fasting/time-restricted eating literature with mechanistic studies"
+    geography: "General"
+    sample_size: null
+    methodology: "Review of fasting/fed-state substrate use, glycogen, lipolysis, ketogenesis, protein turnover and metabolic outcomes."
+    relevant_variables: ["fasting", "glycogen", "fat oxidation", "ketone bodies", "protein mobilization"]
+    relationships: {supports: ["BIO-0007"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Specific 24-hour quantitative statements should be traced to primary studies.", "Healthy-adult fasting physiology is not universal across life stages/disease."]
+    quality: {rating: "moderate-high", rationale: "Physiological Reviews synthesis; useful for mechanism and reserve dynamics."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0015
+    citation: "Hamm LL, Nakhoul N, Hering-Smith KS. Acid-Base Homeostasis. Clin J Am Soc Nephrol. 2015;10(12):2232-2242."
+    persistent_identifier: {doi: "10.2215/CJN.07400715", url: "https://pubmed.ncbi.nlm.nih.gov/26597304/", isbn: null, other: "PMID:26597304"}
+    publication_date: "2015"
+    source_type: "peer-reviewed physiology review"
+    evidence_level: "mechanistic synthesis"
+    authors_or_institution: ["L. Lee Hamm", "Nazih Nakhoul", "Kathleen S. Hering-Smith"]
+    population: "Human renal/acid-base physiology"
+    geography: "General"
+    sample_size: null
+    methodology: "Review of systemic buffering, respiratory CO2 handling, renal bicarbonate regulation and acid excretion."
+    relevant_variables: ["pH", "bicarbonate", "CO2", "renal acid excretion", "buffering"]
+    relationships: {supports: ["BIO-0003", "BIO-0006", "BIO-0012"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Does not alone establish quantitative acute tolerance thresholds or comprehensive waste-removal requirements."]
+    quality: {rating: "high", rationale: "Peer-reviewed nephrology physiology review directly addressing respiratory-renal acid-base control."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0016
+    citation: "Hsia CCW. Tissue Perfusion and Diffusion and Cellular Respiration: Transport and Utilization of Oxygen. Semin Respir Crit Care Med. 2023;44(5):594-611."
+    persistent_identifier: {doi: "10.1055/s-0043-1770061", url: "https://pubmed.ncbi.nlm.nih.gov/37541315/", isbn: null, other: "PMID:37541315"}
+    publication_date: "2023"
+    source_type: "peer-reviewed physiology review"
+    evidence_level: "modern mechanistic synthesis"
+    authors_or_institution: ["Connie C. W. Hsia", "UT Southwestern Medical Center"]
+    population: "Human respiratory/cardiovascular physiology"
+    geography: "General"
+    sample_size: null
+    methodology: "Integrated review of alveolar uptake, hemoglobin carriage, perfusion, diffusion, mitochondrial utilization and matching to energy demand."
+    relevant_variables: ["oxygen uptake", "hemoglobin", "perfusion", "diffusion", "cellular respiration", "CO2 exchange"]
+    relationships: {supports: ["BIO-0002", "BIO-0004"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Does not by itself quantify 'no meaningful oxygen store' or define a universal ambient threshold."]
+    quality: {rating: "high", rationale: "Recent peer-reviewed review explicitly integrates the atmosphere-to-mitochondria transport chain and perfusion."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0017
+    citation: "Radziuk J. Hepatic glycogen in humans. I. Direct formation after oral and intravenous glucose or after a 24-h fast. Am J Physiol. 1989;257(2 Pt 1):E145-E157."
+    persistent_identifier: {doi: "10.1152/ajpendo.1989.257.2.E145", url: "https://pubmed.ncbi.nlm.nih.gov/2669511/", isbn: null, other: "PMID:2669511"}
+    publication_date: "1989"
+    source_type: "primary human metabolic study"
+    evidence_level: "direct experimental human evidence"
+    authors_or_institution: ["J. Radziuk", "University of Western Ontario"]
+    population: "Adults undergoing 12-h and 24-h fasting protocols"
+    geography: "Canada"
+    sample_size: null
+    methodology: "Double-tracer glucose methodology comparing hepatic glycogen metabolism after 12-h versus 24-h fasting and glucose loading."
+    relevant_variables: ["24-hour fast", "hepatic glycogen", "glucose", "gluconeogenesis"]
+    relationships: {supports: ["BIO-0007"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Study addresses glycogen/glucose metabolism, not the safety of fasting for every population or the full energy-store horizon."]
+    quality: {rating: "high for narrow inference", rationale: "Direct human metabolic experiment explicitly including a 24-hour fasting condition."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0018
+    citation: "Acute sleep deprivation disrupts emotion, cognition, inflammation, and cortisol in young healthy adults. 2022."
+    persistent_identifier: {doi: null, url: "https://pubmed.ncbi.nlm.nih.gov/36212194/", isbn: null, other: "PMID:36212194"}
+    publication_date: "2022"
+    source_type: "primary human sleep-deprivation study"
+    evidence_level: "direct experimental evidence"
+    authors_or_institution: []
+    population: "Young healthy adults"
+    geography: ""
+    sample_size: null
+    methodology: "Acute sleep-deprivation protocol assessing cognitive/emotional and physiological outcomes."
+    relevant_variables: ["acute sleep loss", "cognition", "emotion", "inflammation", "cortisol"]
+    relationships: {supports: ["BIO-0013"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Supports acute functional/physiological impairment; does not establish a universal minimum sleep duration or acute survival threshold."]
+    quality: {rating: "moderate-high", rationale: "Direct human experimental evidence relevant to the functional-performance portion of BIO-0013."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0019
+    citation: "Rondon-Berrios H, Berl T. Physiology and Pathophysiology of Water Homeostasis. Front Horm Res. 2019;52:8-23."
+    persistent_identifier: {doi: "10.1159/000493233", url: "https://pubmed.ncbi.nlm.nih.gov/32097945/", isbn: null, other: "PMID:32097945"}
+    publication_date: "2019"
+    source_type: "peer-reviewed physiology review"
+    evidence_level: "mechanistic synthesis"
+    authors_or_institution: ["Helbert Rondon-Berrios", "Tomas Berl"]
+    population: "Human/mammalian water-homeostasis physiology"
+    geography: "General"
+    sample_size: null
+    methodology: "Review of osmosensing, thirst, vasopressin, urine dilution/concentration and body-fluid tonicity."
+    relevant_variables: ["body water", "tonicity", "osmolality", "thirst", "vasopressin", "urine concentration"]
+    relationships: {supports: ["BIO-0005", "BIO-0006"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Mechanistic review does not by itself establish exact dehydration survival thresholds or oral intake requirements."]
+    quality: {rating: "high", rationale: "Focused review directly describing the regulatory mechanisms that maintain body-fluid tonicity."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0020
+    citation: "Weiner ID, Mitch WE, Sands JM. Urea and Ammonia Metabolism and the Control of Renal Nitrogen Excretion. Clin J Am Soc Nephrol. 2015."
+    persistent_identifier: {doi: null, url: "https://pubmed.ncbi.nlm.nih.gov/25078422/", isbn: null, other: "PMID:25078422"}
+    publication_date: "2015"
+    source_type: "peer-reviewed renal physiology review"
+    evidence_level: "mechanistic synthesis"
+    authors_or_institution: ["I. David Weiner", "William E. Mitch", "Jeff M. Sands"]
+    population: "Human/mammalian nitrogen and renal physiology"
+    geography: "General"
+    sample_size: null
+    methodology: "Review of urea production/handling, ammonia metabolism and regulation of renal nitrogen excretion."
+    relevant_variables: ["urea", "ammonia", "renal nitrogen excretion", "protein metabolism", "kidney"]
+    relationships: {supports: ["BIO-0012"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["The source supports nitrogen processing/excretion mechanisms; it does not define a single tolerable interruption duration."]
+    quality: {rating: "high", rationale: "Focused peer-reviewed nephrology synthesis by established renal physiologists."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0021
+    citation: "Human physiological responses to cold exposure. 2004."
+    persistent_identifier: {doi: null, url: "https://pubmed.ncbi.nlm.nih.gov/15152898/", isbn: null, other: "PMID:15152898"}
+    publication_date: "2004"
+    source_type: "peer-reviewed review"
+    evidence_level: "mechanistic environmental-physiology synthesis"
+    authors_or_institution: []
+    population: "Humans exposed to cold"
+    geography: "General"
+    sample_size: null
+    methodology: "Review of human thermoregulatory responses to cold exposure."
+    relevant_variables: ["cold exposure", "vasoconstriction", "thermogenesis", "core temperature", "environment"]
+    relationships: {supports: ["BIO-0011", "BIO-0014"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Review does not create one universal safe ambient-temperature threshold; wind, moisture, clothing, activity and individual factors modify risk."]
+    quality: {rating: "moderate-high", rationale: "Directly relevant human environmental-physiology review filling the cold-side gap left by heat-focused sources."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0022
+    citation: "Essential fatty acid deficiency in parenteral nutrition: Historical perspective and modern solutions, a narrative review. 2025."
+    persistent_identifier: {doi: null, url: "https://pubmed.ncbi.nlm.nih.gov/39961748/", isbn: null, other: "PMID:39961748"}
+    publication_date: "2025"
+    source_type: "peer-reviewed narrative review"
+    evidence_level: "clinical/nutritional synthesis"
+    authors_or_institution: []
+    population: "Patients receiving parenteral nutrition; historical human deficiency literature"
+    geography: "General"
+    sample_size: null
+    methodology: "Review of essential fatty acid deficiency, diagnostic markers and prevention/treatment in parenteral nutrition."
+    relevant_variables: ["linoleic acid", "alpha-linolenic acid", "essential fatty acid deficiency", "parenteral nutrition"]
+    relationships: {supports: ["BIO-0009"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Clinical parenteral-nutrition context is not representative of all healthy humans.", "Useful for essentiality and non-immediate deficiency development, not for a universal depletion horizon."]
+    quality: {rating: "moderate", rationale: "Clinically relevant synthesis that supports essentiality and temporal separation from an arbitrary single-day intake, but population is specialized."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0023
+    citation: "Alberts B, Johnson A, Lewis J, et al. Molecular Biology of the Cell. 4th ed. Chapter 2: Catalysis and the Use of Energy by Cells. Garland Science; 2002."
+    persistent_identifier: {doi: null, url: "https://www.ncbi.nlm.nih.gov/books/NBK26838/", isbn: null, other: "NCBI Bookshelf:NBK26838"}
+    publication_date: "2002"
+    source_type: "academic reference textbook"
+    evidence_level: "foundational mechanistic reference"
+    authors_or_institution: ["Bruce Alberts", "Alexander Johnson", "Julian Lewis et al."]
+    population: "General cellular biology"
+    geography: "General"
+    sample_size: null
+    methodology: "Academic synthesis of cellular energetics and ATP-coupled reactions."
+    relevant_variables: ["ATP", "ATP hydrolysis", "ATP regeneration", "cellular energy", "fuel oxidation"]
+    relationships: {supports: ["BIO-0001"], challenges: [], used_by_desks: ["research/biology", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["General cell-biology reference rather than human whole-body primary research.", "Does not quantify whole-body energy expenditure."]
+    quality: {rating: "high for foundational mechanism", rationale: "Canonical academic cell-biology reference explicitly describing continual energy input and ATP cycling."}
+    date_last_verified: "2026-09-21"
