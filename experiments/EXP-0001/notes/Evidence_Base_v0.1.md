@@ -49,3 +49,37 @@ This artifact maps Biology_1 BIO-0001 through BIO-0014 to registered REF objects
 Evidence Base v0.1 is sufficient to support **serious Red Team review of Biology_1**. It is not sufficient to convert the 14 claims into universal quantitative daily requirements.
 
 The strongest cross-cutting finding is methodological: the evidence repeatedly supports separating physiological requirement from observed consumption and from external replenishment cadence. Population reference intakes, measured turnover, expenditure and safety criteria are different evidence objects and must not be silently substituted for one another.
+
+
+## Librarian_2 audit after RedTeam_1
+
+Red Team PR #9 (RT-0001 through RT-0008) was audited against the registered evidence. The following evidence dispositions supersede any broader wording in the first-pass table above where they conflict.
+
+| Challenge | Librarian disposition | Evidence consequence |
+|---|---|---|
+| RT-0001 oxygen inventory | **Sustained.** | REF-0001/0016 support continuing oxygen delivery but not a literal absence of internal O2 inventory. REF-0026 adds direct support for transient body oxygen stores during apnea. BIO-0002 should be narrowed; do not parameterize store magnitude yet. |
+| RT-0002 water source accounting | **Sustained.** | REF-0004/0013/0019 support water balance, and metabolic water is a legitimate inflow. The earlier evidence-map wording is corrected: external preformed water is not the sole source term. Avoid double-counting water produced from oxidized substrate. |
+| RT-0003 amino-acid stock category | **Sustained and evidence strengthened.** | REF-0024 and REF-0025 distinguish dynamic amino-acid/protein turnover from a dedicated costless nutrient reserve. Fasting supply can involve body-protein proteolysis and nitrogen loss. No safe replenishment horizon is assigned. |
+| RT-0004 essential-fatty-acid horizon | **Sustained.** | REF-0003 establishes essentiality; REF-0022 is specialized clinical evidence. Evidence Base v0.1 does **not** verify “>24 h under ordinary stocked conditions” as a general-population horizon. BIO-0009 should mark horizon unresolved. |
+| RT-0005 elimination vs consumption | **Sustained as semantic/modeling correction.** | REF-0015/0020 describe CO2/renal elimination as output/excretion processes. They do not justify classifying those outputs as consumed external resources. |
+| RT-0006 electrolyte conservation | **Sustained as model-boundary correction.** | REF-0004/0005/0015/0019 support regulated compartments and renal/homeostatic control. Internal redistribution cannot be treated as net creation of a whole-body conserved electrolyte stock. |
+| RT-0007 protein double counting | **Sustained and evidence strengthened.** | REF-0024/0025 reinforce that body protein is a physical tissue inventory participating in turnover/catabolism. It must not simultaneously appear as an independent energy reserve and an independent amino-acid reserve without conservation links. |
+| RT-0008 environmental completeness | **Sustained.** | Existing sources cover important oxygen and thermal dimensions, not an exhaustive environmental hazard surface. BIO-0014 is supportable only as an umbrella/decomposition claim. |
+
+### Corrected support statuses for challenged BIO claims
+
+- **BIO-0002:** qualified support; wording revision required before claim-level verification.
+- **BIO-0003:** physiological mechanism supported; quantity-role semantics require revision.
+- **BIO-0005:** physiological stock/flow claim supported after inclusion of metabolic-water source.
+- **BIO-0006:** biological homeostasis claim supported; downstream conservation boundary must be corrected.
+- **BIO-0007:** scoped fasting/substrate claim remains supported; body-protein ownership must be canonicalized in the model.
+- **BIO-0008:** essentiality supported; stock representation and replenishment horizon remain unresolved. REF-0024/0025 strengthen turnover provenance.
+- **BIO-0009:** essentiality supported; claimed >24 h general replenishment horizon **not verified**.
+- **BIO-0012:** renal/nitrogen mechanism supported; elimination must not be semantically collapsed into consumption.
+- **BIO-0014:** umbrella environmental dependency supported; completeness **not verified**.
+
+### Librarian_2 conclusion
+
+RedTeam_1 does not overturn Evidence Base v0.1's central anti-calendar finding, but it identifies several places where the first-pass source mapping was too permissive. Evidence Base v0.1 is therefore retained as a provenance base with this audit as a corrective layer. The challenged clauses above should not be treated as verified until Biology_2/Data_2 adopt the corrections or provide stronger evidence.
+
+New evidence registered in response: REF-0024 through REF-0026.
