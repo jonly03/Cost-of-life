@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+<title id="title">VIS-0001 — The 24-Hour Human System</title>
+<desc id="desc">System diagram showing a human organism as an open system with flows, stocks, bounded states, processes, capacities, environmental conditions, external mediation, uncertainty, and different replenishment horizons.</desc>
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#243447"/></marker>
+  <marker id="arrowLight" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#52667a"/></marker>
+  <style>
+    text{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#17212b}
+    .small{font-size:17px}.body{font-size:20px}.label{font-size:18px;font-weight:650}.h2{font-size:27px;font-weight:750}.h1{font-size:46px;font-weight:800}
+    .muted{fill:#5f7080}.white{fill:#fff}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  </style>
+</defs>
+
+<rect width="1600" height="1100" fill="#f6f4ef"/>
+<text x="80" y="82" class="h1">The 24-Hour Human System</text>
+<text x="82" y="120" class="body muted">A 24-hour observation window is not a 24-hour shopping list.</text>
+
+<!-- environment field -->
+<rect x="60" y="160" width="1480" height="720" rx="34" fill="#e8eef0" stroke="#8ca0ab" stroke-width="2"/>
+<text x="90" y="200" class="label muted">ENVIRONMENT / EXTERNAL WORLD</text>
+<text x="1210" y="200" class="small muted">open-ended hazard surface</text>
+<path d="M1452 188 l18 0" stroke="#7b8994" stroke-width="3" stroke-dasharray="7 7"/>
+<text x="1476" y="194" class="small muted">?</text>
+
+<!-- organism boundary -->
+<rect x="350" y="245" width="900" height="540" rx="46" fill="#fffdf8" stroke="#243447" stroke-width="4"/>
+<text x="390" y="300" class="h2">HUMAN ORGANISM</text>
+<text x="390" y="329" class="small muted">pre-existing inventories + functioning systems at t₀</text>
+
+<!-- external conditions -->
+<rect x="85" y="260" width="215" height="94" rx="18" fill="#d8e6eb" stroke="#6f8794" stroke-width="2"/>
+<text x="105" y="291" class="label">Breathable</text><text x="105" y="318" class="label">atmosphere</text>
+<text x="105" y="341" class="small muted">condition + access</text>
+
+<rect x="85" y="405" width="215" height="94" rx="18" fill="#d8e6eb" stroke="#6f8794" stroke-width="2"/>
+<text x="105" y="438" class="label">Thermal</text><text x="105" y="465" class="label">conditions</text>
+<text x="105" y="488" class="small muted">may require mediation</text>
+
+<rect x="85" y="550" width="215" height="125" rx="18" fill="#edf0df" stroke="#929b6a" stroke-width="2"/>
+<text x="105" y="582" class="label">Accessible inputs</text>
+<text x="105" y="611" class="small">preformed water</text>
+<text x="105" y="638" class="small">metabolic substrate</text>
+<text x="105" y="665" class="small muted">conditional by stock/state</text>
+
+<!-- inbound arrows -->
+<line x1="300" y1="307" x2="350" y2="307" stroke="#243447" stroke-width="4" marker-end="url(#arrow)"/>
+<text x="312" y="289" class="small mono">O₂</text>
+<line x1="300" y1="612" x2="350" y2="612" stroke="#52667a" stroke-width="4" stroke-dasharray="10 7" marker-end="url(#arrowLight)"/>
+<text x="309" y="592" class="small muted">input when needed</text>
+<line x1="300" y1="452" x2="350" y2="452" stroke="#52667a" stroke-width="3" stroke-dasharray="5 7"/>
+<text x="310" y="430" class="small muted">constraint</text>
+
+<!-- internal columns -->
+<text x="395" y="385" class="label">STOCKS</text>
+<path d="M395 410 h190 v150 q0 24 -24 24 h-142 q-24 0 -24 -24 z" fill="#f0e4cb" stroke="#9a8052" stroke-width="2"/>
+<path d="M395 440 q95 22 190 0" fill="none" stroke="#b99c67" stroke-width="2"/>
+<text x="418" y="470" class="small">body water</text>
+<text x="418" y="498" class="small">glycogen + adipose</text>
+<text x="418" y="526" class="small">electrolyte inventory</text>
+<text x="418" y="554" class="small">body protein / tissue*</text>
+<text x="405" y="610" class="small muted">*not consequence-free reserve</text>
+
+<text x="630" y="385" class="label">BOUNDED STATES</text>
+<circle cx="735" cy="470" r="88" fill="#f3e5e4" stroke="#9c6d69" stroke-width="3"/>
+<circle cx="735" cy="470" r="58" fill="none" stroke="#c49b98" stroke-width="2" stroke-dasharray="7 6"/>
+<text x="678" y="447" class="small">hydration /</text><text x="679" y="472" class="small">osmolality</text>
+<text x="674" y="500" class="small">electrolytes</text>
+<text x="680" y="525" class="small">core temp</text>
+<text x="654" y="583" class="small muted">viable range ≠ universal number</text>
+
+<text x="860" y="385" class="label">PROCESSES</text>
+<rect x="855" y="414" width="188" height="54" rx="27" fill="#dfe9ef" stroke="#6d8594" stroke-width="2"/><text x="881" y="448" class="small">ATP / metabolism</text>
+<rect x="855" y="482" width="188" height="54" rx="27" fill="#dfe9ef" stroke="#6d8594" stroke-width="2"/><text x="896" y="516" class="small">circulation</text>
+<rect x="855" y="550" width="188" height="54" rx="27" fill="#dfe9ef" stroke="#6d8594" stroke-width="2"/><text x="874" y="584" class="small">gas exchange</text>
+<rect x="855" y="618" width="188" height="54" rx="27" fill="#dfe9ef" stroke="#6d8594" stroke-width="2"/><text x="880" y="652" class="small">renal processing</text>
+<rect x="855" y="686" width="188" height="54" rx="27" fill="#dfe9ef" stroke="#6d8594" stroke-width="2"/><text x="884" y="720" class="small">sleep / recovery</text>
+
+<text x="1080" y="385" class="label">CAPACITIES</text>
+<path d="M1090 415 h24 v250 h-24 M1114 415 h78 M1114 665 h78" fill="none" stroke="#7b6c91" stroke-width="4"/>
+<text x="1132" y="449" class="small">respiratory</text>
+<text x="1132" y="489" class="small">cardiovascular</text>
+<text x="1132" y="529" class="small">renal</text>
+<text x="1132" y="569" class="small">thermoregulatory</text>
+<text x="1132" y="609" class="small muted">ability ≠ realized flow</text>
+
+<!-- internal relations -->
+<path d="M585 495 C620 495 620 470 647 470" fill="none" stroke="#52667a" stroke-width="3" marker-end="url(#arrowLight)"/>
+<path d="M823 470 C846 470 842 441 855 441" fill="none" stroke="#52667a" stroke-width="3" marker-end="url(#arrowLight)"/>
+<path d="M1043 509 C1064 509 1070 509 1090 509" fill="none" stroke="#52667a" stroke-width="3" marker-end="url(#arrowLight)"/>
+
+<!-- outputs -->
+<rect x="1300" y="300" width="215" height="210" rx="18" fill="#efe6e0" stroke="#a07e6e" stroke-width="2"/>
+<text x="1320" y="335" class="label">OUTPUTS /</text><text x="1320" y="362" class="label">EXCHANGE</text>
+<text x="1320" y="400" class="small">CO₂ elimination</text>
+<text x="1320" y="429" class="small">water losses</text>
+<text x="1320" y="458" class="small">renal / fecal waste</text>
+<text x="1320" y="487" class="small">heat exchange</text>
+<line x1="1250" y1="405" x2="1300" y2="405" stroke="#243447" stroke-width="4" marker-end="url(#arrow)"/>
+<text x="1262" y="385" class="small muted">out</text>
+
+<!-- semantic strip -->
+<rect x="390" y="710" width="820" height="55" rx="14" fill="#f4f1e9" stroke="#c8c0af"/>
+<text x="410" y="744" class="small"><tspan font-weight="700">REQUIREMENT</tspan> what must remain true</text>
+<text x="695" y="744" class="small"><tspan font-weight="700">CONSUMPTION</tspan> use / depletion</text>
+<text x="970" y="744" class="small"><tspan font-weight="700">REPLENISHMENT</tspan> restore from outside</text>
+
+<!-- anti-equivalence callout -->
+<rect x="1030" y="555" width="460" height="150" rx="22" fill="#fff8e9" stroke="#bd9551" stroke-width="2"/>
+<text x="1060" y="592" class="label">The anti-calendar rule</text>
+<text x="1060" y="626" class="body">Used during 24 h  ≠  necessarily</text>
+<text x="1060" y="658" class="body">externally replenished during 24 h</text>
+<text x="1060" y="688" class="small muted">initial stock + internal production may buffer demand</text>
+
+<!-- timescale ribbon -->
+<text x="80" y="930" class="h2">Different dependencies run on different clocks</text>
+<line x1="85" y1="982" x2="1515" y2="982" stroke="#243447" stroke-width="4"/>
+<circle cx="220" cy="982" r="8" fill="#243447"/><circle cx="610" cy="982" r="8" fill="#243447"/><circle cx="1010" cy="982" r="8" fill="#243447"/><circle cx="1390" cy="982" r="8" fill="#243447"/>
+<text x="120" y="1024" class="label">seconds → minutes</text><text x="120" y="1052" class="small muted">O₂ continuity / short buffer</text>
+<text x="510" y="1024" class="label">continuous regulation</text><text x="510" y="1052" class="small muted">metabolism · circulation · heat balance</text>
+<text x="915" y="1024" class="label">hours → days</text><text x="915" y="1052" class="small muted">water depends on stock, loss, context</text>
+<text x="1290" y="1024" class="label">variable / unresolved</text><text x="1290" y="1052" class="small muted">several nutrient horizons + thresholds</text>
+<path d="M1515 966 l0 32" stroke="#243447" stroke-width="3" stroke-dasharray="6 5"/>
+<text x="1455" y="1080" class="small muted">24 h is observation, not default refill cadence</text>
+</svg>
