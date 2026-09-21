@@ -204,7 +204,7 @@ claims:
     uncertainty: {type: [replenishment_horizon, quantitative], notes: "Deficiency-development timing and minimum intake are not established here."}
     limitations: ["Dietary intake recommendations are not survival thresholds."]
     relationships: {supported_by: [REF-0003, REF-0022], challenged_by: [RT-0004], depends_on: [BIO-0007], represented_by: [], used_by: [], supersedes: [], superseded_by: []}
-    peom_implication: "Treat essential lipids as longer-horizon nutrient stocks/flows."
+    peom_implication: "Represent essential-fatty-acid requirements using stock/flow semantics where appropriate, while keeping external replenishment cadence and replenishment horizon explicitly unresolved and distinct from the 24-hour observation window."
     version: 2
 
   - id: BIO-0010
