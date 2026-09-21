@@ -390,3 +390,54 @@ sources:
     limitations: ["General cell-biology reference rather than human whole-body primary research.", "Does not quantify whole-body energy expenditure."]
     quality: {rating: "high for foundational mechanism", rationale: "Canonical academic cell-biology reference explicitly describing continual energy input and ATP cycling."}
     date_last_verified: "2026-09-21"
+
+  - id: REF-0024
+    citation: "Waterlow JC. Whole-body protein turnover in humans—past, present, and future. Annu Rev Nutr. 1995;15:57-92."
+    persistent_identifier: {doi: "10.1146/annurev.nu.15.070195.000421", url: "https://pubmed.ncbi.nlm.nih.gov/8527232/", isbn: null, other: "PMID:8527232"}
+    publication_date: "1995"
+    source_type: "peer-reviewed review"
+    evidence_level: "authoritative protein-turnover synthesis"
+    authors_or_institution: ["J. C. Waterlow", "London School of Hygiene and Tropical Medicine"]
+    population: "Human whole-body protein metabolism"
+    geography: "General"
+    sample_size: null
+    methodology: "Review of human whole-body protein-turnover concepts, measurement methods, physiological states and limitations."
+    relevant_variables: ["protein turnover", "amino acid metabolism", "fasting", "body protein"]
+    relationships: {supports: ["BIO-0008"], challenges: [], used_by_desks: ["research/biology", "research/data-modeling", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Review emphasizes measurement uncertainty and does not define a discrete safe amino-acid depletion horizon."]
+    quality: {rating: "high for turnover structure", rationale: "Foundational human protein-turnover review by a major investigator; directly relevant to distinguishing dynamic amino-acid pools from body-protein inventory."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0025
+    citation: "Fryburg DA, Barrett EJ, Louard RJ, Gelfand RA. Effect of starvation on human muscle protein metabolism and its response to insulin. Am J Physiol. 1990;259(4 Pt 1):E477-E482."
+    persistent_identifier: {doi: null, url: "https://pubmed.ncbi.nlm.nih.gov/2221049/", isbn: null, other: "PMID:2221049"}
+    publication_date: "1990"
+    source_type: "primary human metabolic study"
+    evidence_level: "direct experimental evidence"
+    authors_or_institution: ["D. A. Fryburg", "E. J. Barrett", "R. J. Louard", "R. A. Gelfand"]
+    population: "Eight healthy human subjects studied after 12 h and 60 h fasting"
+    geography: ""
+    sample_size: 8
+    methodology: "Stable/radioisotope amino-acid kinetic measurements across the forearm and whole body during short-term fasting with insulin intervention."
+    relevant_variables: ["muscle proteolysis", "amino acid release", "leucine flux", "nitrogen loss", "fasting"]
+    relationships: {supports: ["BIO-0008"], challenges: [], used_by_desks: ["research/biology", "research/data-modeling", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Small healthy-adult sample.", "Does not establish a universal replenishment horizon; it demonstrates that fasting amino-acid supply can come from increased tissue proteolysis with nitrogen loss."]
+    quality: {rating: "moderate-high", rationale: "Direct human tracer evidence supporting Red Team's distinction between free amino-acid availability and body-protein catabolism."}
+    date_last_verified: "2026-09-21"
+
+  - id: REF-0026
+    citation: "Cardiopulmonary consequences of obstructive sleep apnea. 1990."
+    persistent_identifier: {doi: null, url: "https://pubmed.ncbi.nlm.nih.gov/2205763/", isbn: null, other: "PMID:2205763"}
+    publication_date: "1990"
+    source_type: "peer-reviewed review"
+    evidence_level: "clinical respiratory-physiology synthesis"
+    authors_or_institution: []
+    population: "Humans, with emphasis on obstructive sleep apnea"
+    geography: "General"
+    sample_size: null
+    methodology: "Review of apnea physiology, oxygen consumption, internal oxygen stores and oxyhemoglobin desaturation."
+    relevant_variables: ["apnea", "lung oxygen store", "blood oxygen", "desaturation"]
+    relationships: {supports: [], challenges: ["BIO-0002"], used_by_desks: ["research/biology", "research/data-modeling", "research/library"], experiment_ids: ["EXP-0001"]}
+    limitations: ["Clinical apnea context does not quantify all whole-body oxygen stores or a general population reserve.", "Useful specifically to falsify a literal zero-oxygen-inventory interpretation."]
+    quality: {rating: "moderate-high for narrow challenge", rationale: "Directly states that during apnea metabolic oxygen demand is met transiently from body oxygen stores, supporting RT-0001's qualification."}
+    date_last_verified: "2026-09-21"
